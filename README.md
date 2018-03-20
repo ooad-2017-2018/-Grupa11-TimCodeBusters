@@ -31,4 +31,18 @@ Brisanje profila vrši administrator. Brisanje profila može tražiti sam korisnik,
 
 ### Prijave profila
 Korisnici mogu prijavljivati profile drugih korisnika uz navedene razloge. Validni razlozi mogu biti: lažno predstavljanje, uznemiravanje, korištenje tuðih slika, pravljenje duplih profila itd. Administrator provjerava opravdanost prijava i u skladu s tim reaguje.
+
+## Funkcionalnosti
+
+- Kreiranje korisnièkog raèuna
+- Deaktiviranje korisnièkog raèuna
+- Prikaz drugih korisnika u blizini
+- Prilagoðeni prikaz drugih korisnika na osnovu broja godina i maksimalne udaljenosti od trenutne lokacije
+- Odabir jedne od moguænosti: “Sviða mi se” i “Ne sviða mi se” na osnovu prikaza nekoliko slika i kratke biografije
+- Uspostava kontakta izmeðu korisnika
+- Ostavljanje generalnog utiska o drugom korisniku nakon komunikacije u vidu ocjene 1 - 5
+- Ažuriranje postojeæeg korisnièkog raèuna
+- Prijava drugih korisnika zbog kršenja pravila
+- Moguænost trajnog brisanja korisnièkih raèuna od strane administratora
+- Uvid u razlièite statistièke podatke od strane administratora  
  
