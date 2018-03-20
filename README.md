@@ -48,6 +48,6 @@ Korisnici mogu prijavljivati profile drugih korisnika uz navedene razloge. Valid
  
 ## Akteri
 
-1. Korisnik - Osoba koja se registrovala na aplikaciju. Korisnik može vidjeti osobe u blizini te na jedinstven naèin iskazati svoju zainteresiranost. Zatim, u moguænosti je vidjeti detaljnije informacije i poslati privatnu poruku osobama sa kojima je uparen. Konaèno, on ima moguænost prijave drugih osoba zbog kršenja pravila.
+1. Korisnik - Osoba koja se registrovala na aplikaciju. Može vidjeti osobe u blizini te na jedinstven naèin iskazati svoju zainteresiranost. Zatim, u moguænosti je vidjeti detaljnije informacije i poslati privatnu poruku osobama sa kojima je uparen. Konaèno, ima moguænost ocjenjivanja osoba s kojima je uparen ocjenom od 1-5, kao i moguænost prijave drugih korisnika zbog kršenja pravila.
 
 2. Administrator - Osoba koja ima uvid o svim registriranim korisnicima. Upravlja bazom podataka, razmatra prijave korisnika i ima moguænost brisanja korisnièkih profila. Kreira i pregleda razne statistièke izvještaje u svrhu unaprijeðenja aplikacije.
