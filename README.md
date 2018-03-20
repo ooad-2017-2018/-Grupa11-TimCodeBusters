@@ -11,3 +11,24 @@
 ## Opis teme
 
 Svrha aplikacije je da pojednostavi i omoguæi stupanje u kontakt i dogovaranje sastanaka izmeðu osoba suprotnog spola. Ukoliko tražite savršenu osobu za sastanak, registrujte se na Match2Date. Korisnici na vrlo jednostavan naèin stupaju u kontakt s osobom s kojom dijele zajednièke interese. Uz obostranu saglasnost, spajanje poèinje. Dogovaranje sastanaka nikada nije bilo lakše!
+
+## Procesi
+
+### Kreiranje korisnièkog raèuna
+Korisnik se registruje unoseæi e-mail adresi i šifru. Prilikom registracije on vrši upload slika te unosi liène i kontakt podatke. Opcionalno, može prilagoditi prikaz osoba odabirom raspona godina i maksimalne udaljenosti.
+
+### Pregled profila
+Korisnik ima moguænost pregleda profila osoba suprotnog spola (u blizini). Prikazuje se nekoliko slika i kratka biografija, kao i prosjeèna ocjena, dodijeljena od drugih korisnika, ako postoji. Korisnik može koristiti filtere za prikaz samo osoba odreðene starosne dobi ili na maksimalno odreðenoj udaljenosti od njegove trenutne lokacije.
+
+### Uparivanje
+Na osnovu pregleda profila korisnik bira osobe koje mu se svide i s kojima želi daljnju komunikaciju. Oznaèava ih sa "sviða mi se" i tako šalje zahtjev (obavijest) toj osobi. Osobe koje je korisnik pozitivno ocijenio odgovaraju na zahtjev. U sluèaju da je pokazan interes sa obje strane, upareni korisnici primaju obavijest o tome. Takoðer, dobivaju moguænosti pregleda ostalih informacija s profila i komunikacije. Upareni korisnici imaju i moguænost meðusobnog ocjenjivanja od 1-5, kao generalni utisak o drugom korisniku. Ocjena æe se prikazivati na profilu prilikom pregleda.
+
+### Upravljanje profilom
+Korisnik ima moguænost naknadnog ažuriranja informacija na svom profilu. Dodavanje novih slika, uklanjanje postojeæih. Takoðer, postoji moguænost deaktiviranja profila od strane korisnika. Deaktivirani profil se ne prikazuje u pretraživanjima i onemoguæen mu je pristup do ponovne aktivacije. Profil se opet može aktivirati na zahtjev korisnika.
+
+### Brisanje profila
+Brisanje profila vrši administrator. Brisanje profila može tražiti sam korisnik, a može biti i posljedica kršenja pravila npr. lažno predstavljanje, dupli profili, prijave drugih korisnika itd. 
+
+### Prijave profila
+Korisnici mogu prijavljivati profile drugih korisnika uz navedene razloge. Validni razlozi mogu biti: lažno predstavljanje, uznemiravanje, korištenje tuðih slika, pravljenje duplih profila itd. Administrator provjerava opravdanost prijava i u skladu s tim reaguje.
+ 
