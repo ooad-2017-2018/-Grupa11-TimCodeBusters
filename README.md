@@ -2,13 +2,17 @@
 
 # Tema: Online upoznavanje Match2Date
 
+<p align="center">
+  <img src="slika.png" width="350"/>
+</p>
+
 ## Èlanovi tima:
 
 1. Aganoviæ Asim
 2. Begoviæ Hamza
 3. Teroviæ Amar
 
-![Screenshot](slika.png)
+
 
 ## Opis teme
 
