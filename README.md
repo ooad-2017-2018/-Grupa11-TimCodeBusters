@@ -27,7 +27,7 @@ Korisnik se registruje unoseæi e-mail adresi i šifru. Prilikom registracije on v
 Korisnik ima moguænost pregleda profila osoba suprotnog spola (u blizini). Prikazuje se nekoliko slika i kratka biografija, kao i prosjeèna ocjena, dodijeljena od drugih korisnika, ako postoji. Korisnik može koristiti filtere za prikaz samo osoba odreðene starosne dobi ili na maksimalno odreðenoj udaljenosti od njegove trenutne lokacije.
 
 #### Uparivanje
-Na osnovu pregleda profila korisnik bira osobe koje mu se svide i s kojima želi daljnju komunikaciju (oznaèava ih sa "sviða mi se". U sluèaju da je pokazan interes sa obje strane, upareni korisnici primaju obavijest o tome. Takoðer, dobivaju moguænosti pregleda ostalih informacija s profila i komunikacije. Upareni korisnici imaju i moguænost meðusobnog ocjenjivanja od 1-5, kao generalni utisak o drugom korisniku. Ocjena æe se prikazivati na profilu prilikom pregleda.
+Na osnovu pregleda profila korisnik bira osobe koje mu se svide i s kojima želi daljnju komunikaciju (oznaèava ih sa "sviða mi se"). U sluèaju da je pokazan interes sa obje strane, upareni korisnici primaju obavijest o tome. Takoðer, dobivaju moguænosti pregleda ostalih informacija s profila i komunikacije. Upareni korisnici imaju i moguænost meðusobnog ocjenjivanja od 1-5, kao generalni utisak o drugom korisniku. Ocjena æe se prikazivati na profilu prilikom pregleda.
 
 #### Upravljanje profilom
 Korisnik ima moguænost naknadnog ažuriranja informacija na svom profilu. Dodavanje novih slika, uklanjanje postojeæih. Takoðer, postoji moguænost deaktiviranja profila od strane korisnika. Deaktivirani profil se ne prikazuje u pretraživanjima i onemoguæen mu je pristup do ponovne aktivacije. Profil se opet može aktivirati na zahtjev korisnika.
