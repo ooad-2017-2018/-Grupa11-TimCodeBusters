@@ -1,6 +1,6 @@
 # Grupa11-TimCodeBusters
 
-# Tema: Online upoznavanje Match2Date
+## Online upoznavanje Match2Date
 
 <p align="center">
   <img src="slika.png" width="350"/>
