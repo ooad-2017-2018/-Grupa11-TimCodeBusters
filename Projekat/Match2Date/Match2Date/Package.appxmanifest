@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="83ac076d-efeb-44e1-a9d3-57f3c8b9b270"
+    Name="7cb94525-05f1-4bcb-9042-a9158cb24ffd"
     Publisher="CN=User"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="83ac076d-efeb-44e1-a9d3-57f3c8b9b270" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="7cb94525-05f1-4bcb-9042-a9158cb24ffd" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Match2Date</DisplayName>
