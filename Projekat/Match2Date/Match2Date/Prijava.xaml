@@ -28,38 +28,44 @@
 
         <Grid Grid.Row="1" Name="MainGrid"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"> </ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"> </ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+               
             </Grid.ColumnDefinitions>
-            
-            
-            <TextBox MaxWidth="500" Margin="5,40,5,10" Grid.Row="0" Grid.Column="1" PlaceholderText="Email" BorderThickness="2" ></TextBox>
-            <PasswordBox Name="PBox"  MaxWidth="500" Margin="5,10,5,10" Grid.Row="1" Grid.Column="1"  PlaceholderText="Šifra"  BorderThickness="2" BorderBrush="{Binding Errors[Sifra], Converter={StaticResource ErrorToColorConverter}}" ></PasswordBox>
-            <Button Background="#FF60018D" Foreground="White" HorizontalAlignment="Stretch" Margin="5,10,5,10" Grid.Row="2" Grid.Column="1" Content="Prijavi se" Command="{Binding Login}"></Button>
-            <Button Margin="5,10,5,10" Content="Zaboravljena šifra?" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Background="White" Foreground="#FF60018D"></Button>
-            
-            <TextBox MaxWidth="500" Margin="5,40,5,10" Grid.Row="0" Grid.ColumnSpan="3" PlaceholderText="" Text="{Binding KorisnickoIme, Mode=TwoWay}" BorderThickness="2" BorderBrush="{Binding Errors[KorisnickoIme], Converter={StaticResource ErrorToColorConverter}}"></TextBox>
-            <StackPanel HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
-                <TextBlock  VerticalAlignment="Center" Margin="5,10,5,10" Text="Nemate korisnički račun?"></TextBlock>
-                <HyperlinkButton  VerticalAlignment="Center" Margin="5,10,5,10"  Content="Registrirajte se sada" ></HyperlinkButton>
+
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Orientation="Vertical">
+                <TextBox  PlaceholderText="Email" BorderThickness="2" HorizontalAlignment="Stretch" ></TextBox>
+                <PasswordBox Name="PBox"   PlaceholderText="Šifra"  BorderThickness="2" ></PasswordBox>
+                <Button Background="#FF60018D" Foreground="White" HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Content="Prijavi se" ></Button>
             </StackPanel>
 
-            <Image Width = "200" Margin = "20, 130, 20, 0"
-                   Grid.Column="0"
-                   Grid.RowSpan="5"
+
+            <Button Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4,120,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Zaboravljena šifra?"  Background="White" Foreground="#FF60018D"></Button>
+            
+            <StackPanel HorizontalAlignment="Left"  Margin="80,10,0,0" Orientation="Vertical" Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="2">
+               
+                <TextBlock   Text="Nemate korisnički račun?"></TextBlock>
+                <HyperlinkButton    Content="Registrirajte se sada" ></HyperlinkButton>
+            </StackPanel>
+
+            <Image
+                   Grid.Column="0" Grid.Row="1"
+                
+                   Grid.RowSpan="2" Grid.ColumnSpan="3"
                    Source="/Assets/slika.png" 
                    
                    />
-            <TextBlock   MaxWidth="500" HorizontalAlignment="Center" Grid.Row="5" Margin="5,40,5,10" Grid.ColumnSpan="2" FontSize="22" 
+            <TextBlock   HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="22" 
                         Text="Upoznaj nove i zanimljive ljude u svojoj blizini"  FontWeight="Bold" FontStyle="Normal" Foreground="#FFE84545" FontFamily="Hobo Std" />
 
         </Grid>
