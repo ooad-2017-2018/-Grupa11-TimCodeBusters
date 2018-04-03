@@ -39,7 +39,6 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"> </ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-               
             </Grid.ColumnDefinitions>
 
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Orientation="Vertical">
@@ -48,25 +47,22 @@
                 <Button Background="#FF60018D" Foreground="White" HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Content="Prijavi se" ></Button>
             </StackPanel>
 
+            <Button FontSize="15" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4,120,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Zaboravljena šifra?"  Background="White" Foreground="#FF60018D"></Button>
 
-            <Button Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4,120,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Zaboravljena šifra?"  Background="White" Foreground="#FF60018D"></Button>
-            
             <StackPanel HorizontalAlignment="Left"  Margin="80,10,0,0" Orientation="Vertical" Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="2">
-               
-                <TextBlock   Text="Nemate korisnički račun?"></TextBlock>
-                <HyperlinkButton    Content="Registrirajte se sada" ></HyperlinkButton>
+                <TextBlock  FontSize="15"  Text="Nemate korisnički račun?"></TextBlock>
+                <HyperlinkButton FontSize="15" Content="Registrirajte se sada" ></HyperlinkButton>
             </StackPanel>
 
             <Image
                    Grid.Column="0" Grid.Row="1"
-                
                    Grid.RowSpan="2" Grid.ColumnSpan="3"
                    Source="/Assets/slika.png" 
-                   
                    />
-            <TextBlock   HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                         Margin="0,0,0,17"
                          Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="22" 
-                        Text="Upoznaj nove i zanimljive ljude u svojoj blizini"  FontWeight="Bold" FontStyle="Normal" Foreground="#FFE84545" FontFamily="Hobo Std" />
+                        Text="Upoznaj nove i zanimljive ljude u svojoj blizini"  FontWeight="Bold" FontStyle="Normal" Foreground="#FFE84545" FontFamily="Adobe Fangsong Std R" />
 
         </Grid>
 
