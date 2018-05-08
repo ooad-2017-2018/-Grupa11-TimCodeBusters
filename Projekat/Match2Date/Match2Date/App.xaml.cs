@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.WindowsAzure.MobileServices;
+using Match2Date.View;
 
 
 namespace Match2Date
@@ -69,7 +70,7 @@ namespace Match2Date
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(Prijava), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
