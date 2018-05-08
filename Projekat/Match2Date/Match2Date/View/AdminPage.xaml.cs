@@ -26,9 +26,10 @@ namespace Match2Date.View
         {
             this.InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(System.Object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
