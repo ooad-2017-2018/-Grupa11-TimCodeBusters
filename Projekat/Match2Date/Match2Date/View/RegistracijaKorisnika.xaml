@@ -5,6 +5,7 @@
     xmlns:local="using:Match2Date"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Match2Date.ViewModel"
     mc:Ignorable="d">
     
     
@@ -49,10 +50,10 @@
             </TextBlock>
         </RelativePanel>
 
-        
-        <TextBox Name="firstName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" ></TextBox>
+
+        <TextBox Name="firstName" Text="{Binding VIme, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" ></TextBox>
         <TextBlock  Text="&#x0a;Ime: " Grid.Row="1" Grid.Column="0" TextAlignment="Center"></TextBlock>
-        <TextBox Name="lastName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" ></TextBox>
+        <TextBox Name="lastName" Text="{Binding VPrezime, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" ></TextBox>
         <TextBlock  Text="&#x0a;Prezime: " Grid.Row="2" Grid.Column="0" TextAlignment="Center"></TextBlock>
 
         <TextBox Name="email" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"  ></TextBox>

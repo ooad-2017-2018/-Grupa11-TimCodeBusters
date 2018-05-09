@@ -103,6 +103,7 @@
     <Compile Include="Model\Prijava.cs" />
     <Compile Include="Model\Razgovor.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\RegistracijaKorisnikaViewModel.cs" />
     <Compile Include="View\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
