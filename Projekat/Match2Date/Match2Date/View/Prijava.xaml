@@ -51,7 +51,7 @@
 
             <StackPanel HorizontalAlignment="Left"  Margin="80,10,0,0" Orientation="Vertical" Grid.Row="4" Grid.Column="1"  Grid.ColumnSpan="2">
                 <TextBlock  FontSize="15"  Text="Nemate korisnički račun?"></TextBlock>
-                <HyperlinkButton FontSize="15" Content="Registrirajte se sada" Click="HyperlinkButton_Click"></HyperlinkButton>
+                <HyperlinkButton FontSize="15" Content="Registrujte se sada" Click="HyperlinkButton_Click"></HyperlinkButton>
             </StackPanel>
 
             <Image
