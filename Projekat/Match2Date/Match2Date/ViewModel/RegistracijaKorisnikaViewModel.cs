@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Match2Date.Model;
 using Match2Date.Enumeration;
-using System.ComponentModel;
 using System.Windows.Input;
 using Windows.UI.Popups;
 using System.Text.RegularExpressions;
@@ -16,8 +15,6 @@ namespace Match2Date.ViewModel
 {
     public class RegistracijaKorisnikaViewModel : INotifyPropertyChanged
     {
-
-        public static int id = 0;
         public event PropertyChangedEventHandler PropertyChanged;
         public MessageDialog Poruka { get; set; }
 
@@ -42,12 +39,16 @@ namespace Match2Date.ViewModel
         public string VOpis { get => _vOpis; set { _vOpis = value; NotifyPropertyChanged(nameof(VOpis)); } }
         //List<Byte[]> VListaSlika { get; set; }
 
-        public ICommand RegistrujSe;
-        public static Korisnik korisnik;
+        public ICommand RegistrujSe { get; set; }
 
         public RegistracijaKorisnikaViewModel()
         {
             RegistrujSe = new RelayCommand<object>(registracijaKorisnika);
+            VIme = "";
+            VPrezime = "";
+            VGrad = "";
+            VEmail = "";
+            VSifra = "";
         }
 
         private void NotifyPropertyChanged(String info)
@@ -73,7 +74,7 @@ namespace Match2Date.ViewModel
                 return;
             }
             korisnici obj = new korisnici();
-            obj.Id = id.ToString(); id++;
+            obj.Id = DBHelp.DajIduciIDAsync().Result.ToString();
             obj.Ime = VIme;
             obj.Prezime = VPrezime;
             obj.Grad = VGrad;
@@ -83,7 +84,14 @@ namespace Match2Date.ViewModel
             obj.Spol = VSpol;
             obj.Ocjena = -1;
             obj.Aktivan = true;
-            DBHelp.DodajKorisnika(obj);
+            try
+            {
+                DBHelp.DodajKorisnika(obj);
+            }
+            catch(Exception ex)
+            {
+                await new MessageDialog(ex.ToString()).ShowAsync();
+            }
 
             Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis);
             Poruka = new MessageDialog("Uspješno kreiran račun.");

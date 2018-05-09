@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Match2Date.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace Match2Date.View
         {
             this.InitializeComponent();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //base.OnNavigatedTo(e);
 
+            DataContext = new RegistracijaKorisnikaViewModel();
+        }
     }
 }
