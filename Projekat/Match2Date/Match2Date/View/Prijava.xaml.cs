@@ -55,6 +55,9 @@ namespace Match2Date.View
             }
         }
 
-        
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegistracijaKorisnika));
+        }
     }
 }
