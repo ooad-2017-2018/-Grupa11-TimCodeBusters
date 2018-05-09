@@ -33,11 +33,11 @@ namespace Match2Date.AzureDB
             {
                 if (mailCorrect)
                 {
-                    throw new MissingFieldException("Netačna šifra, pokušajte ponovo!");
+                    throw new IzuzetakNetacnaSifra();
                 }
                 else
                 {
-                    throw new KeyNotFoundException("Korisnik ne postoji");
+                    throw new IzuzetakKorisnikNePostoji();
                 }
             }
             return null;

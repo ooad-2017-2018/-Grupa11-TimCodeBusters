@@ -40,11 +40,11 @@ namespace Match2Date.View
                 Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
                 this.Frame.Navigate(typeof(MainPage), korisnik);
             }
-            catch (MissingFieldException ex)
+            catch (IzuzetakNetacnaSifra ex)
             {
                 await new MessageDialog(ex.ToString()).ShowAsync();
             }
-            catch (KeyNotFoundException ex)
+            catch (IzuzetakKorisnikNePostoji ex)
             {
                 await new MessageDialog(ex.ToString()).ShowAsync();
                 sifra.Password = "";
