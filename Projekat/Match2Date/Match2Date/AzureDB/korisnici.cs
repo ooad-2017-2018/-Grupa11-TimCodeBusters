@@ -7,9 +7,9 @@ using Match2Date.Enumeration;
 
 namespace Match2Date.AzureDB
 {
-    class Korisnik
+    class korisnici
     {
-        int id;
+        String id;
         String ime;
         String prezime;
         String grad;
@@ -21,7 +21,7 @@ namespace Match2Date.AzureDB
         Double ocjena;
         bool aktivan;
 
-        public global::System.Int32 Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
         public String Ime { get => ime; set => ime = value; }
         public String Prezime { get => prezime; set => prezime = value; }
         public String Grad { get => grad; set => grad = value; }

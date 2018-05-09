@@ -42,8 +42,8 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Orientation="Vertical">
-                <TextBox  PlaceholderText="Email" BorderThickness="2" HorizontalAlignment="Stretch" ></TextBox>
-                <PasswordBox Name="PBox"   PlaceholderText="Šifra"  BorderThickness="2" ></PasswordBox>
+                <TextBox  Name="email" PlaceholderText="Email" BorderThickness="2" HorizontalAlignment="Stretch" ></TextBox>
+                <PasswordBox Name="sifra"  PlaceholderText="Šifra"  BorderThickness="2" ></PasswordBox>
                 <Button Background="#FF60018D" Foreground="White" HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Content="Prijavi se" Click="Button_Click" ></Button>
             </StackPanel>
 
