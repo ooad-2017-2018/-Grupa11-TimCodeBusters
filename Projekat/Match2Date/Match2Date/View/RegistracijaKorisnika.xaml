@@ -6,7 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    
+    
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -27,7 +34,22 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Registracija"  Grid.Row="0"  Grid.ColumnSpan="4"  TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" ></TextBlock>
+
+
+
+        <RelativePanel Grid.Row="0" Background="#FF60018D" Height="50"  Grid.ColumnSpan="4" >
+            <TextBlock Text="  Registracija" 
+                       Foreground="White" 
+                       
+                       FontSize="18" 
+                       RelativePanel.AlignVerticalCenterWithPanel="True" 
+                       RelativePanel.AlignLeftWithPanel="True"
+                       Margin="0,0,0,0" 
+                       FontWeight="Bold">
+            </TextBlock>
+        </RelativePanel>
+
+        
         <TextBox Name="firstName" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" ></TextBox>
         <TextBlock  Text="&#x0a;Ime: " Grid.Row="1" Grid.Column="0" TextAlignment="Center"></TextBlock>
         <TextBox Name="lastName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" ></TextBox>
@@ -73,13 +95,19 @@
         <TextBlock  Text="&#x0a;Telefon: "   Grid.Row="3" Grid.Column="2" TextAlignment="Center"></TextBlock>
 
         <TextBlock  Text="&#x0a;Fotografije: "  Grid.Row="4" Grid.Column="2"  TextAlignment="Center"></TextBlock>
-
-
-        <Border BorderThickness="1">
-            <Image HorizontalAlignment="Center"  Margin="0,0,20,0"  Grid.Row="4" Grid.Column="3" ></Image>
+        <Border   
+            Grid.Row="4" Grid.Column="3" BorderThickness="2"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" Margin="3,3,3,3" >
+            <Image HorizontalAlignment="Center"   Grid.Row="4" Grid.Column="3" ></Image>
         </Border>
-        <Image HorizontalAlignment="Center"  Margin="0,0,20,0" Grid.Row="5" Grid.Column="3"></Image>
-        <Image HorizontalAlignment="Center"   Margin="0,0,20,0" Grid.Row="6" Grid.Column="3"></Image>
+        <Border   
+            Grid.Row="5" Grid.Column="3" BorderThickness="2"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" Margin="3,3,3,3" >
+            <Image HorizontalAlignment="Center"  Grid.Row="4" Grid.Column="3" ></Image>
+        </Border>
+        <Border   
+            Grid.Row="6" Grid.Column="3" BorderThickness="2"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" Margin="3,3,3,3" >
+            <Image HorizontalAlignment="Center"   Grid.Row="4" Grid.Column="3" ></Image>
+        </Border>
+
         <Button  Grid.Row="7" Grid.Column="3" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="Dodaj slike"></Button>
         <Button  Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="3" HorizontalAlignment="Stretch" Click="Button_Click"  VerticalAlignment="Stretch" Content="Registruj se"></Button>
 
