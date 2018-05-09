@@ -7,7 +7,7 @@ using Match2Date.Enumeration;
 
 namespace Match2Date.AzureDB
 {
-    class korisnici
+    public class korisnici
     {
         String id;
         String ime;

@@ -43,6 +43,11 @@ namespace Match2Date.AzureDB
             return null;
         }
        
+        public static async void DodajKorisnika(korisnici obj)
+        {
+            IMobileServiceTable<korisnici> Korisnik = App.MobileService.GetTable<korisnici>();
+            await Korisnik.InsertAsync(obj);
+        }
 
     }
 }

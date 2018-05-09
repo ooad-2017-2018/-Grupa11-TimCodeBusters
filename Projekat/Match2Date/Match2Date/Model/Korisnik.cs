@@ -60,6 +60,11 @@ namespace Match2Date.Model
             this.datumRodjenja = datumRodjenja;
             this.spol = spol;
             this.opis = opis;
+            this.aktivan = true;
+            this.ocjena = -1;
+            this.Filter = null;
+            this.listaLajkanihKorisnika = null;
+            this.listaRazgovora = null;
         }
 
     }

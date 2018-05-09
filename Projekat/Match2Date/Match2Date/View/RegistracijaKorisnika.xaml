@@ -110,7 +110,7 @@
         </Border>
 
         <Button  Grid.Row="7" Grid.Column="3" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="Dodaj slike"></Button>
-        <Button  Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="3" HorizontalAlignment="Stretch" Click="Button_Click"  VerticalAlignment="Stretch" Content="Registruj se"></Button>
+        <Button  Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Registruj se" Command="{Binding Path=RegistrujSe}"></Button>
 
 
 
