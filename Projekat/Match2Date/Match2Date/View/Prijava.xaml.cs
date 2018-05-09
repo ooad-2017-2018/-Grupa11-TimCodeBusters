@@ -12,9 +12,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.WindowsAzure.MobileServices;
 using Match2Date.AzureDB;
 using Windows.UI.Popups;
+using Match2Date.Model;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +26,6 @@ namespace Match2Date.View
     /// </summary>
     public sealed partial class Prijava : Page
     {
-        IMobileServiceTable<korisnici> Korisnici = App.MobileService.GetTable<korisnici>();
         public Prijava()
         {
             this.InitializeComponent();
@@ -37,21 +37,22 @@ namespace Match2Date.View
             var pass = sifra.Password;
             try
             {
-                IEnumerable<korisnici> x = await Korisnici.ReadAsync();
-                foreach(var a in x)
-                {
-                    if(a.Sifra.Equals(pass) && a.Email.Equals(mail))
-                    {
-                        this.Frame.Navigate(typeof(MainPage), a);
-                    }
-                }
-                /*MessageDialog md = new MessageDialog("Korisnik ne postoji");
-                await md.ShowAsync();*/
+                Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
+                this.Frame.Navigate(typeof(MainPage), korisnik);
             }
-            catch(Exception ex)
+            catch (MissingFieldException ex)
             {
-                MessageDialog md = new MessageDialog("GRESKA: " + ex.ToString());
-                await md.ShowAsync();
+                await new MessageDialog(ex.ToString()).ShowAsync();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                await new MessageDialog(ex.ToString()).ShowAsync();
+                sifra.Password = "";
+                sifra.Focus(FocusState.Keyboard);
+            }
+            catch (Exception ex)
+            {
+                await new MessageDialog(ex.ToString()).ShowAsync();
             }
         }
 

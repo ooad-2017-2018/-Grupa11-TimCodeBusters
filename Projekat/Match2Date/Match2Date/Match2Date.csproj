@@ -92,6 +92,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AzureDB\DBHelp.cs" />
     <Compile Include="AzureDB\korisnici.cs" />
     <Compile Include="Enumeration\Spol.cs" />
     <Compile Include="Model\Filter.cs" />
