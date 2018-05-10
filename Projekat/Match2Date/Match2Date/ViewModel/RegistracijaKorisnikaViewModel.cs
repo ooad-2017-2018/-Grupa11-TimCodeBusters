@@ -11,6 +11,8 @@ using Windows.UI.Popups;
 using System.Text.RegularExpressions;
 using Match2Date.AzureDB;
 using Match2Date.View;
+using System.Collections.ObjectModel;
+using System.IO;
 
 namespace Match2Date.ViewModel
 {
@@ -36,15 +38,25 @@ namespace Match2Date.ViewModel
         public string VSifra { get => _vSifra; set { _vSifra = value; NotifyPropertyChanged(nameof(VSifra)); } }
         public string VPotSifra { get => _vPotSifra; set { _vPotSifra = value; NotifyPropertyChanged(nameof(VPotSifra)); } }
         public DateTime VDatumRodjenja { get => _vDatumRodjenja; set { _vDatumRodjenja = value; NotifyPropertyChanged(nameof(VDatumRodjenja)); } }
+        public DateTimeOffset VDatumRodjenjaOffset { get; set; }
         public Spol VSpol { get => _vSpol; set { _vSpol = value; NotifyPropertyChanged(nameof(VSpol)); } }
         public string VOpis { get => _vOpis; set { _vOpis = value; NotifyPropertyChanged(nameof(VOpis)); } }
         //List<Byte[]> VListaSlika { get; set; }
+        public List<string> gradovi { get; set; }
+        public int indexGrad { get; set; }
 
         public ICommand RegistrujSe { get; set; }
+        public ICommand Musko { get; set; }
+        public ICommand Zensko { get; set; }
 
         public RegistracijaKorisnikaViewModel()
         {
+            VDatumRodjenjaOffset = DateTimeOffset.Now;
+            gradovi = File.ReadAllLines(@"Assets\Gradovi.txt").ToList();
+            indexGrad = 0;
             RegistrujSe = new RelayCommand<object>(registracijaKorisnika);
+            Musko = new RelayCommand<object>(postaviMusko);
+            Zensko = new RelayCommand<object>(postaviZensko);
             VIme = "";
             VPrezime = "";
             VGrad = "";
@@ -61,24 +73,33 @@ namespace Match2Date.ViewModel
             }
         }
 
+        private void postaviMusko(object parameter)
+        {
+            VSpol = Spol.musko;
+        }
+
+        private void postaviZensko(object parameter)
+        {
+            VSpol = Spol.zensko;
+        }
+
         private async void registracijaKorisnika(object parametar)
         {
-            //dodati validaciju za selektovani grad i spol ili staviti neki da je vec selektovan po defaultu pa nece trebat validirat dodatno
-            //opis uvijek "" prazan
-
             if (VIme == "" || VEmail == "" || VPrezime == "" || VSifra == "" )
             {
                 Poruka = new MessageDialog("Popunite prazna mjesta.");
                 await Poruka.ShowAsync();
                 return;
             }
-            /*  if (!validirajDatum())
-              {
-                  Poruka = new MessageDialog("Morate imati preko 18 godina!");
-                  await Poruka.ShowAsync();
-                  return;
-              }*/
-            
+            VDatumRodjenja = VDatumRodjenjaOffset.Date;
+
+            if (!validirajDatum())
+            {
+                Poruka = new MessageDialog("Morate imati preko 18 godina!");
+                await Poruka.ShowAsync();
+                return;
+            }
+
             if (await (DBHelp.PostojiMail(VEmail)) == true)
             {
                 Poruka = new MessageDialog("Korisnik sa unesenim mailom već postoji.");
@@ -101,11 +122,11 @@ namespace Match2Date.ViewModel
             korisnici obj = new korisnici();
 
             int k = await DBHelp.DajIduciIDAsync();
-            
+
             obj.Id = k.ToString();
             obj.Ime = VIme;
             obj.Prezime = VPrezime;
-            obj.Grad = VGrad;
+            obj.Grad = gradovi.ElementAt(indexGrad);
             obj.Opis = VOpis;
             obj.Email = VEmail;
             obj.Sifra = VSifra;
@@ -114,10 +135,9 @@ namespace Match2Date.ViewModel
             obj.Ocjena = -1;
             obj.Aktivan = true;
 
-
             try
             {
-              DBHelp.DodajKorisnika(obj);
+                DBHelp.DodajKorisnika(obj);
             }
             catch(Exception ex)
             {
@@ -143,11 +163,9 @@ namespace Match2Date.ViewModel
         }
         private bool validirajDatum()
         {
-            int year = VDatumRodjenja.Year;
-            if (year<2000)
+            if(VDatumRodjenja.AddYears(18) >= DateTime.Now)
                 return true;
             return false;
-
         }
         
     }

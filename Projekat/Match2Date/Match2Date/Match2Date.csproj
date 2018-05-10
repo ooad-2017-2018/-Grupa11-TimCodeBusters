@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\female.png" />
+    <Content Include="Assets\Gradovi.txt" />
     <Content Include="Assets\male.png" />
     <Content Include="Assets\pair.png" />
     <Content Include="Assets\remove.png" />

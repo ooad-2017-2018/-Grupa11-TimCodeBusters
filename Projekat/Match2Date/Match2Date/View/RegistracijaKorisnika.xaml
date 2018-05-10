@@ -70,25 +70,19 @@
         <PasswordBox Name="ConfPassword"  Password="{Binding VPotSifra, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" ></PasswordBox>
         <TextBlock  Text="&#x0a;Potvrdi šifru: " Grid.Row="5" Grid.Column="0" TextAlignment="Center"></TextBlock>
 
-        <DatePicker Name="DateOfBirth" Date="{Binding VDatumRodjenja, Mode=TwoWay}"   Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" ></DatePicker>
+        <DatePicker Name="DateOfBirth" Date ="{Binding VDatumRodjenjaOffset, Mode=TwoWay}"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" ></DatePicker>
         <TextBlock  Text="&#x0a;Datum rođenja: " Grid.Row="6" Grid.Column="0" TextAlignment="Center"></TextBlock>
-
         <TextBlock  Text="&#x0a;Grad: " Grid.Row="7" Grid.Column="0" TextAlignment="Center"></TextBlock>
-        <ComboBox  HorizontalAlignment = "Stretch" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" >
-            <ComboBoxItem Content= "Bihać"></ComboBoxItem>
-            <ComboBoxItem Content= "Mostar"></ComboBoxItem>
-            <ComboBoxItem Content = "Sarajevo"></ComboBoxItem>
-            <ComboBoxItem Content= "Tuzla"/>
-        </ComboBox>
+        <ComboBox  ItemsSource="{Binding gradovi}" Name ="comboBox" HorizontalAlignment = "Stretch" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding indexGrad, Mode=TwoWay}" ></ComboBox>
         <TextBlock  Text="&#x0a;Spol:" Grid.Row="8" Grid.Column="0" TextAlignment="Center"></TextBlock>
         <StackPanel Grid.Column="1" Grid.Row="8">
-            <RadioButton Name="rb1">Muško</RadioButton>
-            <RadioButton Name="rb2">Žensko</RadioButton>
+            <RadioButton IsChecked="True" Command="{Binding Path=Musko}" Name="rb1">Muško</RadioButton>
+            <RadioButton Name="rb2" Command="{Binding Path=Zensko}">Žensko</RadioButton>
 
         </StackPanel>
         <TextBlock  Text="&#x0a;Kratak opis:" Grid.Row="9" Grid.Column="0" TextAlignment="Center"></TextBlock>
 
-        <TextBox Name="opis" Text="{Binding VGrad, Mode=TwoWay}"  Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" ></TextBox>
+        <TextBox Name="opis" Text="{Binding VOpis, Mode=TwoWay}"  Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" ></TextBox>
 
         <TextBox Name="fb" Grid.Column="3"  Grid.ColumnSpan="3" Margin="0,0,20,0" Grid.Row="1" VerticalAlignment="Center"  ></TextBox>
         <TextBlock  Text="&#x0a;Facebook: "   Grid.Row="1" Grid.Column="2" TextAlignment="Center"></TextBlock>
