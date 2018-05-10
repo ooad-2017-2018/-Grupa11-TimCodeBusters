@@ -93,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AzureDB\DBHelp.cs" />
+    <Compile Include="AzureDB\Hash.cs" />
     <Compile Include="AzureDB\Izuzetak.cs" />
     <Compile Include="AzureDB\korisnici.cs" />
     <Compile Include="Enumeration\Spol.cs" />

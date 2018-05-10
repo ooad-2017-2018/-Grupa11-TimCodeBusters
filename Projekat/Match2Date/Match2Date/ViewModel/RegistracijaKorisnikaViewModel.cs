@@ -129,7 +129,7 @@ namespace Match2Date.ViewModel
             obj.Grad = gradovi.ElementAt(indexGrad);
             obj.Opis = VOpis;
             obj.Email = VEmail;
-            obj.Sifra = VSifra;
+            obj.Sifra = Hash.IzracunajMD5Hash(VSifra);
             obj.DatumRodjenja = VDatumRodjenja;
             obj.Spol = VSpol;
             obj.Ocjena = -1;
@@ -147,7 +147,7 @@ namespace Match2Date.ViewModel
             Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis);
             Poruka = new MessageDialog("Uspješno kreiran račun.");
             await Poruka.ShowAsync();
-           
+            
         
         }
 
@@ -163,7 +163,7 @@ namespace Match2Date.ViewModel
         }
         private bool validirajDatum()
         {
-            if(VDatumRodjenja.AddYears(18) >= DateTime.Now)
+            if(VDatumRodjenja.AddYears(18) < DateTime.Now)
                 return true;
             return false;
         }

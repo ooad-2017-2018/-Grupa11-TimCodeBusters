@@ -16,13 +16,10 @@ namespace Match2Date.AzureDB
             bool found = false;
             bool mailCorrect = false;
             IEnumerable<korisnici> x = await Korisnici.ReadAsync();
-
-
-
+            
             foreach (var a in x)
             {
-
-                if (a.Sifra.Equals(pass) && a.Email.Equals(mail))
+                if (a.Sifra.Equals(Hash.IzracunajMD5Hash(pass)) && a.Email.Equals(mail))
                 {
                     Korisnik korisnik = new Korisnik(a.Ime, a.Prezime, a.Grad, a.Email, a.Sifra, a.DatumRodjenja, a.Spol, a.Opis);
                     found = true;
