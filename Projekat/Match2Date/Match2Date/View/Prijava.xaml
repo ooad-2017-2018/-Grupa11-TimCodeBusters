@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <viewmodel:RegistracijaKorisnikaViewModel x:Key="prijava"/>
+        <viewmodel:LoginViewModel x:Key="prijava"/>
     </Page.Resources>
 
     <Grid DataContext="{Binding Source={StaticResource prijava}}" 
@@ -47,8 +47,8 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Orientation="Vertical">
-                <TextBox  Text="{Binding VEmail}" Name="email" PlaceholderText="Email" BorderThickness="2" HorizontalAlignment="Stretch" ></TextBox>
-                <PasswordBox Password="{Binding VSifra}" Name="sifra"  PlaceholderText="Šifra"  BorderThickness="2" ></PasswordBox>
+                <TextBox  Text="{Binding Email, Mode=TwoWay}" Name="email" PlaceholderText="Email" BorderThickness="2" HorizontalAlignment="Stretch" ></TextBox>
+                <PasswordBox Password="{Binding Sifra, Mode=TwoWay}" Name="sifra"  PlaceholderText="Šifra"  BorderThickness="2" ></PasswordBox>
                 <Button Background="#FF60018D" Foreground="White" HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Content="Prijavi se" Command="{Binding Path=PrijaviSe}" ></Button>
             </StackPanel>
 

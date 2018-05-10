@@ -29,8 +29,8 @@ namespace Match2Date.ViewModel
         private string _vEmail;
         private string _vSifra;
 
-        public string VEmail { get => _vEmail; set { _vEmail = value; NotifyPropertyChanged(nameof(VEmail)); } }
-        public string VSifra { get => _vSifra; set { _vSifra = value; NotifyPropertyChanged(nameof(VSifra)); } }
+        public string Email { get => _vEmail; set { _vEmail = value; NotifyPropertyChanged(nameof(Email)); } }
+        public string Sifra { get => _vSifra; set { _vSifra = value; NotifyPropertyChanged(nameof(Sifra)); } }
         public ICommand PrijaviSe { get; set; }
 
         public LoginViewModel()
@@ -38,11 +38,10 @@ namespace Match2Date.ViewModel
             PrijaviSe = new RelayCommand<object>(Prijava);
         }
 
-
         private async void Prijava(object parameter)
         {
-            var mail = VEmail;  
-            var pass = VSifra;
+            var mail = Email;  
+            var pass = Sifra;
             if (mail == "admin" && pass == "admin")
             {
                 ((Frame)Window.Current.Content).Navigate(typeof(AdminPage));
@@ -52,7 +51,7 @@ namespace Match2Date.ViewModel
                 try
                 {
                     Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
-                    ((Frame)Window.Current.Content).Navigate(typeof(AdminPage), korisnik);
+                    ((Frame)Window.Current.Content).Navigate(typeof(MainPage), korisnik);
                 }
                 catch (IzuzetakNetacnaSifra ex)
                 {
@@ -61,7 +60,7 @@ namespace Match2Date.ViewModel
                 catch (IzuzetakKorisnikNePostoji ex)
                 {
                     await new MessageDialog(ex.ToString()).ShowAsync();
-                    VSifra = "";
+                    Sifra = "";
                 }
                 catch (Exception ex)
                 {
