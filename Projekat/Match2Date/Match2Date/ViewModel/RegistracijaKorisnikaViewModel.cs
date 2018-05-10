@@ -13,6 +13,9 @@ using Match2Date.AzureDB;
 using Match2Date.View;
 using System.Collections.ObjectModel;
 using System.IO;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Match2Date.View;
 
 namespace Match2Date.ViewModel
 {
@@ -54,7 +57,7 @@ namespace Match2Date.ViewModel
             VDatumRodjenjaOffset = DateTimeOffset.Now;
             gradovi = File.ReadAllLines(@"Assets\Gradovi.txt").ToList();
             indexGrad = 0;
-            RegistrujSe = new RelayCommand<object>(registracijaKorisnika);
+            RegistrujSe = new RelayCommand<object>(RegistracijaKorisnika);
             Musko = new RelayCommand<object>(postaviMusko);
             Zensko = new RelayCommand<object>(postaviZensko);
             VIme = "";
@@ -83,9 +86,9 @@ namespace Match2Date.ViewModel
             VSpol = Spol.zensko;
         }
 
-        private async void registracijaKorisnika(object parametar)
+        private async void RegistracijaKorisnika(object parametar)
         {
-            if (VIme == "" || VEmail == "" || VPrezime == "" || VSifra == "" )
+            if (VIme == "" || VEmail == "" || VPrezime == "" || VSifra == "" || VOpis == "")
             {
                 Poruka = new MessageDialog("Popunite prazna mjesta.");
                 await Poruka.ShowAsync();
@@ -147,8 +150,8 @@ namespace Match2Date.ViewModel
             Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis);
             Poruka = new MessageDialog("Uspješno kreiran račun.");
             await Poruka.ShowAsync();
-            
-        
+
+            ((Frame)Window.Current.Content).Navigate(typeof(View.Prijava));
         }
 
         private bool validirajMail()

@@ -16,6 +16,7 @@ using Match2Date.AzureDB;
 using Windows.UI.Popups;
 using Match2Date.Model;
 using System.Threading.Tasks;
+using Match2Date.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,36 +32,11 @@ namespace Match2Date.View
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var mail = email.Text;
-            var pass = sifra.Password;
-            if (mail == "admin" && pass == "admin")
-            {
-                this.Frame.Navigate(typeof(AdminPage));
-            }
-            else
-            {
-                try
-                {
-                    Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
-                    this.Frame.Navigate(typeof(MainPage), korisnik);
-                }
-                catch (IzuzetakNetacnaSifra ex)
-                {
-                    await new MessageDialog(ex.ToString()).ShowAsync();
-                }
-                catch (IzuzetakKorisnikNePostoji ex)
-                {
-                    await new MessageDialog(ex.ToString()).ShowAsync();
-                    sifra.Password = "";
-                    sifra.Focus(FocusState.Keyboard);
-                }
-                catch (Exception ex)
-                {
-                    await new MessageDialog(ex.ToString()).ShowAsync();
-                }
-            }
+            //base.OnNavigatedTo(e);
+
+            DataContext = new LoginViewModel();
         }
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
