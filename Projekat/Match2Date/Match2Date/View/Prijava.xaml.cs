@@ -35,24 +35,31 @@ namespace Match2Date.View
         {
             var mail = email.Text;
             var pass = sifra.Password;
-            try
+            if (mail == "admin" && pass == "admin")
             {
-                Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
-                this.Frame.Navigate(typeof(MainPage), korisnik);
+                this.Frame.Navigate(typeof(AdminPage));
             }
-            catch (IzuzetakNetacnaSifra ex)
+            else
             {
-                await new MessageDialog(ex.ToString()).ShowAsync();
-            }
-            catch (IzuzetakKorisnikNePostoji ex)
-            {
-                await new MessageDialog(ex.ToString()).ShowAsync();
-                sifra.Password = "";
-                sifra.Focus(FocusState.Keyboard);
-            }
-            catch (Exception ex)
-            {
-                await new MessageDialog(ex.ToString()).ShowAsync();
+                try
+                {
+                    Korisnik korisnik = await (DBHelp.DajKorisnika(mail, pass));
+                    this.Frame.Navigate(typeof(MainPage), korisnik);
+                }
+                catch (IzuzetakNetacnaSifra ex)
+                {
+                    await new MessageDialog(ex.ToString()).ShowAsync();
+                }
+                catch (IzuzetakKorisnikNePostoji ex)
+                {
+                    await new MessageDialog(ex.ToString()).ShowAsync();
+                    sifra.Password = "";
+                    sifra.Focus(FocusState.Keyboard);
+                }
+                catch (Exception ex)
+                {
+                    await new MessageDialog(ex.ToString()).ShowAsync();
+                }
             }
         }
 

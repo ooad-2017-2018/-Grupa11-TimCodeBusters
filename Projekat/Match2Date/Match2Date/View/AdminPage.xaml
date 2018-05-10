@@ -25,25 +25,26 @@
                 <!--Pivot content goes here-->
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="163*"/>
+                        <ColumnDefinition Width="329*"/>
+                        <ColumnDefinition Width="492*"/>
+                        <ColumnDefinition Width="492*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"
-                                Text="Prijavljeni korisnici:" Margin="148,25,147,473"/>
-                    <ListView Grid.Column="1" Background="AliceBlue"
+                    <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"
+                                Text="Prijavljeni korisnici:" Margin="0,25,0,0" VerticalAlignment="Top"/>
+                    <ListView Grid.Column="2" Background="AliceBlue"
     IsItemClickEnabled="True"
     IsSwipeEnabled="False"
     CanDragItems="False"
-    SelectionMode="Single" Height="426" VerticalAlignment="Bottom" Margin="0,0,0,20" />
-                    <Button Grid.Column="1"
+    SelectionMode="Single" Height="426" VerticalAlignment="Top" Margin="0,359,0,0" HorizontalAlignment="Center" />
+                    <Button Grid.Column="2"
                             Grid.Row="1" HorizontalAlignment="Center"
-                             Click="Button_Click">
+                             Click="Button_Click" Margin="0,0,0,0" VerticalAlignment="Center">
 
                         <Image HorizontalAlignment="Center" Source="/Assets/remove.png" Height="50" Width="50"  />
                     </Button>

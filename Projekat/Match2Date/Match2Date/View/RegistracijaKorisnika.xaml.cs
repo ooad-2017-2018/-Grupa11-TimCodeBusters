@@ -33,5 +33,7 @@ namespace Match2Date.View
 
             DataContext = new RegistracijaKorisnikaViewModel();
         }
+
+       
     }
 }

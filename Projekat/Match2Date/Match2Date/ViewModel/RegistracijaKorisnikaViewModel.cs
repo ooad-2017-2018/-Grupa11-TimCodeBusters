@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Windows.UI.Popups;
 using System.Text.RegularExpressions;
 using Match2Date.AzureDB;
+using Match2Date.View;
 
 namespace Match2Date.ViewModel
 {
@@ -49,6 +50,7 @@ namespace Match2Date.ViewModel
             VGrad = "";
             VEmail = "";
             VSifra = "";
+            VOpis = "";
         }
 
         private void NotifyPropertyChanged(String info)
@@ -61,6 +63,28 @@ namespace Match2Date.ViewModel
 
         private async void registracijaKorisnika(object parametar)
         {
+            //dodati validaciju za selektovani grad i spol ili staviti neki da je vec selektovan po defaultu pa nece trebat validirat dodatno
+            //opis uvijek "" prazan
+
+            if (VIme == "" || VEmail == "" || VPrezime == "" || VSifra == "" )
+            {
+                Poruka = new MessageDialog("Popunite prazna mjesta.");
+                await Poruka.ShowAsync();
+                return;
+            }
+            /*  if (!validirajDatum())
+              {
+                  Poruka = new MessageDialog("Morate imati preko 18 godina!");
+                  await Poruka.ShowAsync();
+                  return;
+              }*/
+            
+            if (await (DBHelp.PostojiMail(VEmail)) == true)
+            {
+                Poruka = new MessageDialog("Korisnik sa unesenim mailom već postoji.");
+                await Poruka.ShowAsync();
+                return;
+            }
             if (!validirajMail())
             {
                 Poruka = new MessageDialog("Neispravna mail adresa.");
@@ -73,20 +97,27 @@ namespace Match2Date.ViewModel
                 await Poruka.ShowAsync();
                 return;
             }
+
             korisnici obj = new korisnici();
-            obj.Id = DBHelp.DajIduciIDAsync().Result.ToString();
+
+            int k = await DBHelp.DajIduciIDAsync();
+            
+            obj.Id = k.ToString();
             obj.Ime = VIme;
             obj.Prezime = VPrezime;
             obj.Grad = VGrad;
+            obj.Opis = VOpis;
             obj.Email = VEmail;
             obj.Sifra = VSifra;
             obj.DatumRodjenja = VDatumRodjenja;
             obj.Spol = VSpol;
             obj.Ocjena = -1;
             obj.Aktivan = true;
+
+
             try
             {
-                DBHelp.DodajKorisnika(obj);
+              DBHelp.DodajKorisnika(obj);
             }
             catch(Exception ex)
             {
@@ -96,6 +127,8 @@ namespace Match2Date.ViewModel
             Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis);
             Poruka = new MessageDialog("Uspješno kreiran račun.");
             await Poruka.ShowAsync();
+           
+        
         }
 
         private bool validirajMail()
@@ -107,6 +140,14 @@ namespace Match2Date.ViewModel
                 return true;
             }
             return false;
+        }
+        private bool validirajDatum()
+        {
+            int year = VDatumRodjenja.Year;
+            if (year<2000)
+                return true;
+            return false;
+
         }
         
     }

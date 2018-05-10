@@ -16,8 +16,12 @@ namespace Match2Date.AzureDB
             bool found = false;
             bool mailCorrect = false;
             IEnumerable<korisnici> x = await Korisnici.ReadAsync();
+
+
+
             foreach (var a in x)
             {
+
                 if (a.Sifra.Equals(pass) && a.Email.Equals(mail))
                 {
                     Korisnik korisnik = new Korisnik(a.Ime, a.Prezime, a.Grad, a.Email, a.Sifra, a.DatumRodjenja, a.Spol, a.Opis);
@@ -42,13 +46,31 @@ namespace Match2Date.AzureDB
             }
             return null;
         }
-       
+
+        public static async Task<bool> PostojiMail(string mail)
+        {
+            IMobileServiceTable<korisnici> Korisnici = App.MobileService.GetTable<korisnici>();
+            bool found = false;
+            
+            IEnumerable<korisnici> x = await Korisnici.ReadAsync();
+            foreach (var a in x)
+            {
+                if (a.Email.Equals(mail))
+                {
+                    return true;
+                }
+            }
+            return false;
+           
+        }
+
         public static async void DodajKorisnika(korisnici obj)
         {
             IMobileServiceTable<korisnici> Korisnik = App.MobileService.GetTable<korisnici>();
             try
             {
                 await Korisnik.InsertAsync(obj);
+               
             }
             catch(Exception e)
             {
@@ -59,8 +81,9 @@ namespace Match2Date.AzureDB
         public static async Task<int> DajIduciIDAsync()
         {
             IMobileServiceTable<korisnici> Korisnici = App.MobileService.GetTable<korisnici>();
+            
             IEnumerable<korisnici> x = await Korisnici.ReadAsync();
-            return x.Count() + 1;
+            return x.Count();
         }
 
     }
