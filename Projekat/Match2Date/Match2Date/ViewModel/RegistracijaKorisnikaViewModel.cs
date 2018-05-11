@@ -16,6 +16,9 @@ using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Match2Date.View;
+using Windows.Storage.Pickers;
+using Windows.Media.Capture;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Match2Date.ViewModel
 {
@@ -51,6 +54,8 @@ namespace Match2Date.ViewModel
         public ICommand RegistrujSe { get; set; }
         public ICommand Musko { get; set; }
         public ICommand Zensko { get; set; }
+        public ICommand DodajSLike { get; set; }
+        public ICommand Kamera { get; set; }
 
         public RegistracijaKorisnikaViewModel()
         {
@@ -58,8 +63,10 @@ namespace Match2Date.ViewModel
             gradovi = File.ReadAllLines(@"Assets\Gradovi.txt").ToList();
             indexGrad = 0;
             RegistrujSe = new RelayCommand<object>(RegistracijaKorisnika);
-            Musko = new RelayCommand<object>(postaviMusko);
-            Zensko = new RelayCommand<object>(postaviZensko);
+            Musko = new RelayCommand<object>(PostaviMusko);
+            Zensko = new RelayCommand<object>(PostaviZensko);
+            DodajSLike = new RelayCommand<object>(UploadSLike);
+            Kamera = new RelayCommand<object>(UploadKamera);
             VIme = "";
             VPrezime = "";
             VGrad = "";
@@ -76,12 +83,34 @@ namespace Match2Date.ViewModel
             }
         }
 
-        private void postaviMusko(object parameter)
+        private async void UploadSLike(object parameter)
+        {
+            var picker = new FileOpenPicker
+            {
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary,
+                FileTypeFilter = { ".jpg", ".jpeg", ".png", ".gif" }
+            };
+            var file = await picker.PickSingleFileAsync();
+        }
+
+        private async void UploadKamera(object parameter)
+        {
+            var capture = new CameraCaptureUI
+            {
+                PhotoSettings =
+                {
+                    Format = CameraCaptureUIPhotoFormat.Jpeg
+                }
+            };
+            var file = await capture.CaptureFileAsync(CameraCaptureUIMode.Photo);
+        }
+
+        private void PostaviMusko(object parameter)
         {
             VSpol = Spol.musko;
         }
 
-        private void postaviZensko(object parameter)
+        private void PostaviZensko(object parameter)
         {
             VSpol = Spol.zensko;
         }

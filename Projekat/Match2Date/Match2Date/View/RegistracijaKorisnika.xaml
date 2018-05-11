@@ -94,21 +94,31 @@
         <TextBlock  Text="&#x0a;Telefon: "   Grid.Row="3" Grid.Column="2" TextAlignment="Center"></TextBlock>
 
         <TextBlock  Text="&#x0a;Fotografije: "  Grid.Row="4" Grid.Column="2"  TextAlignment="Center"></TextBlock>
-        <Border   
+        <Border 
             Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" BorderThickness="1"  Grid.ColumnSpan="3" CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
-            <Image ></Image>
+            <Image Name="slika1"></Image>
         </Border>
         <Border   
             Grid.Row="4" Grid.RowSpan="2"  Grid.Column="4" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
-            <Image ></Image>
+            <Image Name="slika2"></Image>
         </Border>
         <Border   
             Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent"  >
-            <Image></Image>
+            <Image Name="slika3"></Image>
         </Border>
-
-        <Button  Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="Dodaj slike"></Button>
-        <Button  Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Registruj se" Command="{Binding Path=RegistrujSe}"/>
+        <Button Command="{Binding Path=DodajSLike}"
+            Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+            <Viewbox Name="vbox1" MaxHeight="200" MaxWidth="200">
+                <SymbolIcon Symbol="BrowsePhotos"/>
+            </Viewbox>
+        </Button>
+        <Button Command="{Binding Path=Kamera}"
+            Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+            <Viewbox Name="vbox2" MaxHeight="200" MaxWidth="200">
+            <SymbolIcon Symbol="WebCam"/>
+            </Viewbox>
+        </Button>   
+        <Button Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Registruj se" Command="{Binding Path=RegistrujSe}"/>
 
 
 
