@@ -12,12 +12,12 @@ namespace Match2Date.AzureDB
         String facebook;
         String instagram;
         String brojTelefona;
-        String korisnici_id;
+        //String korisnici_id;
 
         public String Id { get => id; set => id = value; }
         public String Facebook { get => facebook; set => facebook = value; }
         public String Instagram { get => instagram; set => instagram = value; }
         public String BrojTelefona { get => brojTelefona; set => brojTelefona = value; }
-        public String Korisnici_id { get => korisnici_id; set => korisnici_id = value; }
+        //public String Korisnici_id { get => korisnici_id; set => korisnici_id = value; }
     }
 }
