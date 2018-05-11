@@ -211,6 +211,10 @@ namespace Match2Date.ViewModel
             obj.Aktivan = true;
 
             obj2.Id = k.ToString();
+<<<<<<< HEAD
+=======
+            obj2.Korisnici_id = k.ToString();
+>>>>>>> c12aede3241c5de133cd1494ca908a544035c472
             obj2.Facebook = VFacebook;
             obj2.Instagram = VInstagram;
             obj2.BrojTelefona = VBrojTelefona;
