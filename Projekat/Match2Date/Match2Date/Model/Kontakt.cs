@@ -15,5 +15,12 @@ namespace Match2Date.Model
         public Kontakt()
         {
         }
+
+        public Kontakt(string facebook, string instagram, string brojTelefona)
+        {
+            this.facebook = facebook;
+            this.instagram = instagram;
+            this.brojTelefona = brojTelefona;
+        }
     }
 }

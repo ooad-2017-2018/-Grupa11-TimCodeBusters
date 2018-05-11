@@ -15,7 +15,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Match2Date.View;
 using Windows.Storage.Pickers;
 using Windows.Media.Capture;
 using Windows.UI.Xaml.Media.Imaging;
@@ -36,6 +35,13 @@ namespace Match2Date.ViewModel
         private DateTime _vDatumRodjenja;
         private Spol _vSpol;
         private string _vOpis;
+        private string _vFacebook;
+        private string _vinstagram;
+        private string _vBrojTelefona;
+
+        public string VFacebook { get => _vFacebook; set { _vFacebook = value; NotifyPropertyChanged(nameof(VFacebook)); } }
+        public string VInstagram { get => _vinstagram; set { _vinstagram = value; NotifyPropertyChanged(nameof(VInstagram)); } }
+        public string VBrojTelefona { get => _vBrojTelefona; set { _vBrojTelefona = value; NotifyPropertyChanged(nameof(VBrojTelefona)); } }
 
         public string VIme { get => _vIme; set { _vIme = value; NotifyPropertyChanged(nameof(VIme)); } }
         public string VPrezime { get => _vPrezime; set { _vPrezime = value; NotifyPropertyChanged(nameof(VPrezime)); } }
@@ -73,6 +79,9 @@ namespace Match2Date.ViewModel
             VEmail = "";
             VSifra = "";
             VOpis = "";
+            VFacebook = "";
+            VInstagram = "";
+            VBrojTelefona = "";
         }
 
         private void NotifyPropertyChanged(String info)
@@ -152,6 +161,7 @@ namespace Match2Date.ViewModel
             }
 
             korisnici obj = new korisnici();
+            Kontakti obj2 = new Kontakti();
 
             int k = await DBHelp.DajIduciIDAsync();
 
@@ -167,16 +177,22 @@ namespace Match2Date.ViewModel
             obj.Ocjena = -1;
             obj.Aktivan = true;
 
+            obj2.IdKontakti = k.ToString();
+            obj2.Korisnici_id = k.ToString();
+            obj2.Facebook = VFacebook;
+            obj2.Instagram = VInstagram;
+            obj2.BrojTelefona = VBrojTelefona;
+
             try
             {
-                DBHelp.DodajKorisnika(obj);
+                DBHelp.DodajKorisnika(obj, obj2);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await new MessageDialog(ex.ToString()).ShowAsync();
             }
-
-            Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis);
+            Kontakt kontakt = new Kontakt(VFacebook, VInstagram, VBrojTelefona);
+            Korisnik korisnik = new Korisnik(VIme, VPrezime, VGrad, VEmail, VSifra, VDatumRodjenja, VSpol, VOpis, kontakt);
             Poruka = new MessageDialog("Uspješno kreiran račun.");
             await Poruka.ShowAsync();
 
@@ -195,10 +211,10 @@ namespace Match2Date.ViewModel
         }
         private bool validirajDatum()
         {
-            if(VDatumRodjenja.AddYears(18) < DateTime.Now)
+            if (VDatumRodjenja.AddYears(18) < DateTime.Now)
                 return true;
             return false;
         }
-        
+
     }
 }

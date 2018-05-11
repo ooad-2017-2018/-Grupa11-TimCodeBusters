@@ -61,12 +61,15 @@ namespace Match2Date.AzureDB
            
         }
 
-        public static async void DodajKorisnika(korisnici obj)
+        public static async void DodajKorisnika(korisnici obj, Kontakti obj2)
         {
             IMobileServiceTable<korisnici> Korisnik = App.MobileService.GetTable<korisnici>();
+            IMobileServiceTable<Kontakti> Kontakt = App.MobileService.GetTable<Kontakti>();
+
             try
             {
                 await Korisnik.InsertAsync(obj);
+                await Kontakt.InsertAsync(obj2);
                
             }
             catch(Exception e)
