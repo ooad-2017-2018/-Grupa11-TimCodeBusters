@@ -8,13 +8,13 @@ namespace Match2Date.AzureDB
 {
     public class Kontakti
     {
-        String idKontakti;
+        String id;
         String facebook;
         String instagram;
         String brojTelefona;
         String korisnici_id;
 
-        public String IdKontakti { get => idKontakti; set => idKontakti = value; }
+        public String Id { get => id; set => id = value; }
         public String Facebook { get => facebook; set => facebook = value; }
         public String Instagram { get => instagram; set => instagram = value; }
         public String BrojTelefona { get => brojTelefona; set => brojTelefona = value; }

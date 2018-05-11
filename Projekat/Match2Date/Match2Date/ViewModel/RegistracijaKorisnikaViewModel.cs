@@ -210,7 +210,7 @@ namespace Match2Date.ViewModel
             obj.Ocjena = -1;
             obj.Aktivan = true;
 
-            obj2.IdKontakti = k.ToString();
+            obj2.Id = k.ToString();
             obj2.Korisnici_id = k.ToString();
             obj2.Facebook = VFacebook;
             obj2.Instagram = VInstagram;
