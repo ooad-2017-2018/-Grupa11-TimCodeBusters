@@ -21,7 +21,7 @@ namespace Match2Date.AzureDB
         Double ocjena;
         bool aktivan;
 
-        public string Id { get => id; set => id = value; }
+        public String Id { get => id; set => id = value; }
         public String Ime { get => ime; set => ime = value; }
         public String Prezime { get => prezime; set => prezime = value; }
         public String Grad { get => grad; set => grad = value; }

@@ -50,6 +50,24 @@ namespace Match2Date.Model
             listaRazgovora = new List<Razgovor>();
         }
 
+        public Korisnik(string ime, string prezime, string grad, string email, string sifra, DateTime datumRodjenja, Spol spol, string opis, Kontakt kontakt)
+        {
+            this.ime = ime;
+            this.prezime = prezime;
+            this.grad = grad;
+            this.email = email;
+            this.sifra = sifra;
+            this.datumRodjenja = datumRodjenja;
+            this.spol = spol;
+            this.opis = opis;
+            this.aktivan = true;
+            this.ocjena = -1;
+            this.Filter = null;
+            this.listaLajkanihKorisnika = null;
+            this.listaRazgovora = null;
+            this.kontakt = kontakt;
+        }
+
         public Korisnik(string ime, string prezime, string grad, string email, string sifra, DateTime datumRodjenja, Spol spol, string opis)
         {
             this.ime = ime;
@@ -66,6 +84,5 @@ namespace Match2Date.Model
             this.listaLajkanihKorisnika = null;
             this.listaRazgovora = null;
         }
-
     }
 }
