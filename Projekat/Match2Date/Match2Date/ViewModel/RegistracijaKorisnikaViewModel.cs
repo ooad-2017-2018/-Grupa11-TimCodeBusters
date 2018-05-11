@@ -15,10 +15,10 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Match2Date.View;
 using Windows.Storage.Pickers;
 using Windows.Media.Capture;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Media;
 
 namespace Match2Date.ViewModel
 {
@@ -56,9 +56,11 @@ namespace Match2Date.ViewModel
         public ICommand Zensko { get; set; }
         public ICommand DodajSLike { get; set; }
         public ICommand Kamera { get; set; }
+        public ImageSource Slika { get; set; }
 
         public RegistracijaKorisnikaViewModel()
         {
+
             VDatumRodjenjaOffset = DateTimeOffset.Now;
             gradovi = File.ReadAllLines(@"Assets\Gradovi.txt").ToList();
             indexGrad = 0;
@@ -85,12 +87,42 @@ namespace Match2Date.ViewModel
 
         private async void UploadSLike(object parameter)
         {
-            var picker = new FileOpenPicker
+            /*var picker = new FileOpenPicker
             {
                 SuggestedStartLocation = PickerLocationId.PicturesLibrary,
                 FileTypeFilter = { ".jpg", ".jpeg", ".png", ".gif" }
             };
-            var file = await picker.PickSingleFileAsync();
+            var file = await picker.PickSingleFileAsync();*/
+
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+
+            // Filter to include a sample subset of file types.
+            openPicker.FileTypeFilter.Clear();
+            openPicker.FileTypeFilter.Add(".bmp");
+            openPicker.FileTypeFilter.Add(".png");
+            openPicker.FileTypeFilter.Add(".jpeg");
+            openPicker.FileTypeFilter.Add(".jpg");
+
+            // Open the file picker.
+            Windows.Storage.StorageFile file = await openPicker.PickSingleFileAsync();
+
+            // 'file' is null if user cancels the file picker.
+            if (file != null)
+            {
+                // Open a stream for the selected file.
+                // The 'using' block ensures the stream is disposed
+                // after the image is loaded.
+                using (Windows.Storage.Streams.IRandomAccessStream fileStream =
+                    await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
+                {
+                    // Set the image source to the selected bitmap.
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.SetSource(fileStream);
+                    Slika = bitmapImage;
+                }
+            }
         }
 
         private async void UploadKamera(object parameter)
