@@ -63,7 +63,7 @@ namespace Match2Date.ViewModel
         public ICommand Zensko { get; set; }
         public ICommand DodajSLike { get; set; }
         public ICommand Kamera { get; set; }
-        public ImageSource Slika { get; set; }
+        public BitmapSource Slika { get; set; }
 
         public RegistracijaKorisnikaViewModel()
         {
@@ -210,11 +210,11 @@ namespace Match2Date.ViewModel
             obj.Ocjena = -1;
             obj.Aktivan = true;
 
-            obj2.IdKontakti = k.ToString();
-            obj2.Korisnici_id = k.ToString();
+            obj2.Id = k.ToString();
             obj2.Facebook = VFacebook;
             obj2.Instagram = VInstagram;
             obj2.BrojTelefona = VBrojTelefona;
+            obj2.Korisnici_id = k.ToString();
 
             try
             {

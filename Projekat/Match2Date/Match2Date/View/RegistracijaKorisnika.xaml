@@ -100,7 +100,7 @@
         </Border>
         <Border 
             Grid.Row="4" Grid.RowSpan="2"  Grid.Column="4" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
-            <Image Source="{Binding Slika}" Name="slika2"></Image>
+            <Image Source="{Binding Slika, Mode=TwoWay}" Name="slika2"></Image>
         </Border>
         <Border   
             Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent"  >
