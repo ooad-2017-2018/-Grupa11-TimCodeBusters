@@ -86,6 +86,7 @@ namespace Match2Date.ViewModel
             VFacebook = "";
             VInstagram = "";
             VBrojTelefona = "";
+            Slika = null;
         }
 
         private void NotifyPropertyChanged(String info)
@@ -210,6 +211,7 @@ namespace Match2Date.ViewModel
             obj.Spol = VSpol;
             obj.Ocjena = -1;
             obj.Aktivan = true;
+            obj.Slika = Slika.ToString();
 
             obj2.Id = k.ToString();
             obj2.Facebook = VFacebook;

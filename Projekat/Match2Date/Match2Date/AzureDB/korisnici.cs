@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Match2Date.Enumeration;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Match2Date.AzureDB
 {
@@ -20,6 +21,7 @@ namespace Match2Date.AzureDB
         String opis;
         Double ocjena;
         bool aktivan;
+        private String slika;
 
         public String Id { get => id; set => id = value; }
         public String Ime { get => ime; set => ime = value; }
@@ -32,5 +34,6 @@ namespace Match2Date.AzureDB
         public String Opis { get => opis; set => opis = value; }
         public Double Ocjena { get => ocjena; set => ocjena = value; }
         public global::System.Boolean Aktivan { get => aktivan; set => aktivan = value; }
+        public String Slika { get => slika; set => slika = value; }
     }
 }
