@@ -39,6 +39,7 @@ namespace Match2Date.ViewModel
         private string _vFacebook;
         private string _vinstagram;
         private string _vBrojTelefona;
+        private BitmapSource _slika;
 
         public string VFacebook { get => _vFacebook; set { _vFacebook = value; NotifyPropertyChanged(nameof(VFacebook)); } }
         public string VInstagram { get => _vinstagram; set { _vinstagram = value; NotifyPropertyChanged(nameof(VInstagram)); } }
@@ -63,7 +64,7 @@ namespace Match2Date.ViewModel
         public ICommand Zensko { get; set; }
         public ICommand DodajSLike { get; set; }
         public ICommand Kamera { get; set; }
-        public BitmapSource Slika { get; set; }
+        public BitmapSource Slika { get => _slika; set { _slika = value; NotifyPropertyChanged(nameof(Slika)); } }
 
         public RegistracijaKorisnikaViewModel()
         {
@@ -214,7 +215,7 @@ namespace Match2Date.ViewModel
             obj2.Facebook = VFacebook;
             obj2.Instagram = VInstagram;
             obj2.BrojTelefona = VBrojTelefona;
-           // obj2.Korisnici_id = k.ToString();
+            // obj2.Korisnici_id = k.ToString();
 
             try
             {
