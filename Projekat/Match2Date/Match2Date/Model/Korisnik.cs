@@ -22,7 +22,7 @@ namespace Match2Date.Model
         bool aktivan;
         Kontakt kontakt;
         Filter filter;
-        List<Byte[]> listaSlika;
+        List<String> listaSlika;
         List<Korisnik> listaLajkanihKorisnika;
         List<Razgovor> listaRazgovora;
 
@@ -38,14 +38,14 @@ namespace Match2Date.Model
         public bool Aktivan { get => aktivan; set => aktivan = value; }
         public Kontakt Kontakt { get => kontakt; set => kontakt = value; }
         public Filter Filter { get => filter; set => filter = value; }
-        public List<byte[]> ListaSlika { get => listaSlika; set => listaSlika = value; }
+        public List<String> ListaSlika { get => listaSlika; set => listaSlika = value; }
         public List<Korisnik> ListaLajkanihKorisnika { get => listaLajkanihKorisnika; set => listaLajkanihKorisnika = value; }
         public List<Razgovor> ListaRazgovora { get => listaRazgovora; set => listaRazgovora = value; }
         public string Ime { get => ime; set => ime = value; }
 
         public Korisnik()
         {
-            listaSlika = new List<byte[]>();
+            listaSlika = new List<String>();
             listaLajkanihKorisnika = new List<Korisnik>();
             listaRazgovora = new List<Razgovor>();
         }
@@ -68,7 +68,7 @@ namespace Match2Date.Model
             this.kontakt = kontakt;
         }
 
-        public Korisnik(string ime, string prezime, string grad, string email, string sifra, DateTime datumRodjenja, Spol spol, string opis)
+        public Korisnik(string ime, string prezime, string grad, string email, string sifra, DateTime datumRodjenja, Spol spol, string opis, List<String> slike)
         {
             this.ime = ime;
             this.prezime = prezime;
@@ -83,6 +83,7 @@ namespace Match2Date.Model
             this.Filter = null;
             this.listaLajkanihKorisnika = null;
             this.listaRazgovora = null;
+            this.ListaSlika = slike;
         }
     }
 }

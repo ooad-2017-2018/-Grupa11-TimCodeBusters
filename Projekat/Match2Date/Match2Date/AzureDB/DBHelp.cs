@@ -21,7 +21,7 @@ namespace Match2Date.AzureDB
             {
                 if (a.Sifra.Equals(Hash.IzracunajMD5Hash(pass)) && a.Email.Equals(mail))
                 {
-                    Korisnik korisnik = new Korisnik(a.Ime, a.Prezime, a.Grad, a.Email, a.Sifra, a.DatumRodjenja, a.Spol, a.Opis);
+                    Korisnik korisnik = new Korisnik(a.Ime, a.Prezime, a.Grad, a.Email, a.Sifra, a.DatumRodjenja, a.Spol, a.Opis, new List<String> { a.Slika1, a.Slika2, a.Slika3});
                     found = true;
                     return korisnik;
                 }

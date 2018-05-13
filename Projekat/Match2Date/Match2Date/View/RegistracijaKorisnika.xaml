@@ -95,16 +95,16 @@
 
         <TextBlock  Text="&#x0a;Fotografije: "  Grid.Row="4" Grid.Column="2"  TextAlignment="Center"></TextBlock>
         <Border 
-            Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" BorderThickness="1"  Grid.ColumnSpan="3" CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
-            <Image Name="slika1"></Image>
+            Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" BorderThickness="1"  CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
+            <Image Source="{Binding Slika1, Mode=TwoWay}" Stretch="Fill" Name="slika1"></Image>
         </Border>
         <Border 
             Grid.Row="4" Grid.RowSpan="2"  Grid.Column="4" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
-            <Image Source="{Binding Slika, Mode=TwoWay}" Name="slika2"></Image>
+            <Image Source="{Binding Slika2, Mode=TwoWay}" Name="slika2" Stretch="Fill"></Image>
         </Border>
         <Border   
             Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent"  >
-            <Image Name="slika3"></Image>
+            <Image Source="{Binding Slika3, Mode=TwoWay}" Stretch="Fill" Name="slika3"></Image>
         </Border>
         <Button Command="{Binding Path=DodajSLike}"
             Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Stretch">

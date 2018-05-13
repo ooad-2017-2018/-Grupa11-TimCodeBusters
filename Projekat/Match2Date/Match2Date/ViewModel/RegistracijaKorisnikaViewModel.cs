@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using Match2Date.Model;
 using Match2Date.Enumeration;
@@ -10,15 +8,18 @@ using System.Windows.Input;
 using Windows.UI.Popups;
 using System.Text.RegularExpressions;
 using Match2Date.AzureDB;
-using Match2Date.View;
-using System.Collections.ObjectModel;
 using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Storage.Pickers;
 using Windows.Media.Capture;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Media;
+using Windows.Storage.Streams;
+using Microsoft.WindowsAzure.Storage;
+using Windows.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Windows.Graphics.Imaging;
+using Windows.Foundation;
 
 namespace Match2Date.ViewModel
 {
@@ -39,7 +40,16 @@ namespace Match2Date.ViewModel
         private string _vFacebook;
         private string _vinstagram;
         private string _vBrojTelefona;
-        private BitmapSource _slika;
+        private BitmapSource _slika1;
+        private BitmapSource _slika2;
+        private BitmapSource _slika3;
+        private int aktivnaSlika;
+        private StorageFile sf1;
+        private StorageFile sf2;
+        private StorageFile sf3;
+
+        private static string pathAzure = "https://korisnicislike.blob.core.windows.net/korisnicislike/";
+
 
         public string VFacebook { get => _vFacebook; set { _vFacebook = value; NotifyPropertyChanged(nameof(VFacebook)); } }
         public string VInstagram { get => _vinstagram; set { _vinstagram = value; NotifyPropertyChanged(nameof(VInstagram)); } }
@@ -64,11 +74,15 @@ namespace Match2Date.ViewModel
         public ICommand Zensko { get; set; }
         public ICommand DodajSLike { get; set; }
         public ICommand Kamera { get; set; }
-        public BitmapSource Slika { get => _slika; set { _slika = value; NotifyPropertyChanged(nameof(Slika)); } }
+        public BitmapSource Slika1 { get => _slika1; set { _slika1 = value; NotifyPropertyChanged(nameof(Slika1)); } }
+        public BitmapSource Slika2 { get => _slika2; set { _slika2 = value; NotifyPropertyChanged(nameof(Slika2)); } }
+        public BitmapSource Slika3 { get => _slika3; set { _slika3 = value; NotifyPropertyChanged(nameof(Slika3)); } }
+        public StorageFile Sf1 { get => sf1; set => sf1 = value; }
+        public StorageFile Sf2 { get => sf2; set => sf2 = value; }
+        public StorageFile Sf3 { get => sf3; set => sf3 = value; }
 
         public RegistracijaKorisnikaViewModel()
         {
-
             VDatumRodjenjaOffset = DateTimeOffset.Now;
             gradovi = File.ReadAllLines(@"Assets\Gradovi.txt").ToList();
             indexGrad = 0;
@@ -77,16 +91,14 @@ namespace Match2Date.ViewModel
             Zensko = new RelayCommand<object>(PostaviZensko);
             DodajSLike = new RelayCommand<object>(UploadSLike);
             Kamera = new RelayCommand<object>(UploadKamera);
-            VIme = "";
-            VPrezime = "";
-            VGrad = "";
-            VEmail = "";
-            VSifra = "";
-            VOpis = "";
-            VFacebook = "";
-            VInstagram = "";
-            VBrojTelefona = "";
-            Slika = null;
+            VIme = VPrezime = VGrad = VEmail = VSifra = VOpis = VFacebook = VInstagram = VBrojTelefona = "";
+            Slika1 = Slika2 =  Slika3 = null;
+            aktivnaSlika = 1;
+            sf1 = sf2 = sf3 = null;
+
+            //Prikaz slike - nije testirano!
+            /*var bi = new BitmapImage(new Uri("https://korisnicislike.blob.core.windows.net/korisnicislike/CCapture (9).jpg", UriKind.Absolute));
+            Slika2 = bi; */
         }
 
         private void NotifyPropertyChanged(String info)
@@ -99,13 +111,12 @@ namespace Match2Date.ViewModel
 
         private async void UploadSLike(object parameter)
         {
-            /*var picker = new FileOpenPicker
+            if (aktivnaSlika == 4)
             {
-                SuggestedStartLocation = PickerLocationId.PicturesLibrary,
-                FileTypeFilter = { ".jpg", ".jpeg", ".png", ".gif" }
-            };
-            var file = await picker.PickSingleFileAsync();*/
-
+                await new MessageDialog("Možete dodati maksimalno 3 slike!").ShowAsync();
+                aktivnaSlika = 1;
+                return;
+            }
             FileOpenPicker openPicker = new FileOpenPicker();
             openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             openPicker.ViewMode = PickerViewMode.Thumbnail;
@@ -118,7 +129,7 @@ namespace Match2Date.ViewModel
             openPicker.FileTypeFilter.Add(".jpg");
 
             // Open the file picker.
-            Windows.Storage.StorageFile file = await openPicker.PickSingleFileAsync();
+            StorageFile file = await openPicker.PickSingleFileAsync();
 
             // 'file' is null if user cancels the file picker.
             if (file != null)
@@ -126,19 +137,38 @@ namespace Match2Date.ViewModel
                 // Open a stream for the selected file.
                 // The 'using' block ensures the stream is disposed
                 // after the image is loaded.
-                using (Windows.Storage.Streams.IRandomAccessStream fileStream =
-                    await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
+                using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
                 {
                     // Set the image source to the selected bitmap.
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.SetSource(fileStream);
-                    Slika = bitmapImage;
+                    if (aktivnaSlika == 1)
+                    {
+                        Slika1 = bitmapImage;
+                        sf1 = file;
+                    }
+                    else if (aktivnaSlika == 2)
+                    {
+                        Slika2 = bitmapImage;
+                        sf2 = file;
+                    }
+                    else
+                    {
+                        Slika3 = bitmapImage;
+                        sf3 = file;
+                    }
+                    aktivnaSlika++;
                 }
             }
         }
 
         private async void UploadKamera(object parameter)
         {
+            if (aktivnaSlika == 4)
+            {
+                await new MessageDialog("Moguće je dodati tačno 3 slike!").ShowAsync();
+                return;
+            }
             var capture = new CameraCaptureUI
             {
                 PhotoSettings =
@@ -147,6 +177,64 @@ namespace Match2Date.ViewModel
                 }
             };
             var file = await capture.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            if (file != null)
+            {
+                // Open a stream for the selected file.
+                // The 'using' block ensures the stream is disposed
+                // after the image is loaded.
+                using (IRandomAccessStream fileStream =
+                    await file.OpenAsync(FileAccessMode.Read))
+                {
+                    // Set the image source to the selected bitmap.
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.SetSource(fileStream);
+                    if (aktivnaSlika == 1)
+                    {
+                        Slika1 = bitmapImage;
+                        sf1 = file;
+                    }
+                    else if (aktivnaSlika == 2)
+                    {
+                        Slika2 = bitmapImage;
+                        sf2 = file;
+                    }
+                    else
+                    {
+                        Slika3 = bitmapImage;
+                        sf3 = file;
+                    }
+                    aktivnaSlika++;
+                }
+            }
+        }
+
+        private CloudStorageAccount createStorageAccountFromConnectionString()
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            CloudStorageAccount storageAccount;
+            try
+            {
+                storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=korisnicislike;AccountKey=NL2i15uIwXOH+wJeyktiigGNBy4LPpvGHKLQv5YoxIHMurAokcBbboXEOrMhSjK8M4aq+E99CfhcI6Cbza+H4Q==;EndpointSuffix=core.windows.net");
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+            }
+            return storageAccount;
+        }
+
+        private async void saveUserPhoto(StorageFile photo)
+        {
+            CloudStorageAccount storageAccount = createStorageAccountFromConnectionString();
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference("korisnicislike");
+            await container.CreateIfNotExistsAsync();
+            CloudBlockBlob blob = container.GetBlockBlobReference(photo.Name);
+            await blob.UploadFromFileAsync(photo);
         }
 
         private void PostaviMusko(object parameter)
@@ -176,6 +264,13 @@ namespace Match2Date.ViewModel
                 return;
             }
 
+            if(Slika1 == null || Slika2 == null || Slika3 == null)
+            {
+                Poruka = new MessageDialog("Potrebno je dodati 3 slike!");
+                await Poruka.ShowAsync();
+                return;
+            }
+
             if (await (DBHelp.PostojiMail(VEmail)) == true)
             {
                 Poruka = new MessageDialog("Korisnik sa unesenim mailom već postoji.");
@@ -200,6 +295,10 @@ namespace Match2Date.ViewModel
 
             int k = await DBHelp.DajIduciIDAsync();
 
+            saveUserPhoto(sf1);
+            saveUserPhoto(sf2);
+            saveUserPhoto(sf3);
+
             obj.Id = k.ToString();
             obj.Ime = VIme;
             obj.Prezime = VPrezime;
@@ -211,13 +310,15 @@ namespace Match2Date.ViewModel
             obj.Spol = VSpol;
             obj.Ocjena = -1;
             obj.Aktivan = true;
-            obj.Slika = Slika.ToString();
+            obj.Slika1 = pathAzure + sf1.Name;
+            obj.Slika2 = pathAzure + sf2.Name;
+            obj.Slika3 = pathAzure + sf3.Name;
 
             obj2.Id = k.ToString();
             obj2.Facebook = VFacebook;
             obj2.Instagram = VInstagram;
             obj2.BrojTelefona = VBrojTelefona;
-            // obj2.Korisnici_id = k.ToString();
+            //obj2.Korisnici_id = k.ToString();
 
             try
             {

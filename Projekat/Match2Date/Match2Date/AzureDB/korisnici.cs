@@ -21,7 +21,9 @@ namespace Match2Date.AzureDB
         String opis;
         Double ocjena;
         bool aktivan;
-        private String slika;
+        private String slika1;
+        private String slika2;
+        private String slika3;
 
         public String Id { get => id; set => id = value; }
         public String Ime { get => ime; set => ime = value; }
@@ -34,6 +36,8 @@ namespace Match2Date.AzureDB
         public String Opis { get => opis; set => opis = value; }
         public Double Ocjena { get => ocjena; set => ocjena = value; }
         public global::System.Boolean Aktivan { get => aktivan; set => aktivan = value; }
-        public String Slika { get => slika; set => slika = value; }
+        public String Slika1 { get => slika1; set => slika1 = value; }
+        public String Slika2 { get => slika2; set => slika2 = value; }
+        public String Slika3 { get => slika3; set => slika3 = value; }
     }
 }
