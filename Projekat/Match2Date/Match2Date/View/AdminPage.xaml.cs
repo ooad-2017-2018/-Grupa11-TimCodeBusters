@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,11 +28,20 @@ namespace Match2Date.View
             this.InitializeComponent();
         }
 
-        private void Button_Click(System.Object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<string> list = new ObservableCollection<string>();
+          list.Add("aske");
+        list.Add("b");
+        list.Add("c");
+            lista.DataContext =list;
 
+         
+        
+            
+            
+
+           
         }
-
-      
     }
 }

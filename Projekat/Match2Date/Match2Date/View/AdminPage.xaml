@@ -37,14 +37,13 @@
 
                     <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"
                                 Text="Prijavljeni korisnici:" Margin="0,25,0,0" VerticalAlignment="Top"/>
-                    <ListView Grid.Column="2" Background="AliceBlue"
+                    <ListView Grid.Column="2" Background="AliceBlue" Name="lista"
     IsItemClickEnabled="True"
     IsSwipeEnabled="False"
     CanDragItems="False"
     SelectionMode="Single" Height="426" VerticalAlignment="Top" Margin="0,359,0,0" HorizontalAlignment="Center" />
                     <Button Grid.Column="2"
-                            Grid.Row="1" HorizontalAlignment="Center"
-                             Click="Button_Click" Margin="0,0,0,0" VerticalAlignment="Center">
+                            Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="Button_Click">
 
                         <Image HorizontalAlignment="Center" Source="/Assets/remove.png" Height="50" Width="50"  />
                     </Button>
