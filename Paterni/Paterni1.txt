@@ -1,0 +1,29 @@
+Adapter patern
+
+Osnovna namjena Adapter paterna je da omoguæi širu upotrebu veæ postojeæih klasa.
+U situacijama kada  je potreban drugaèiji interfejs veæ postojeæe klase, a ne želimo
+mijenjati postojeæu klasu koristi se Adapter patern. Adapter patern kreira novu adapter
+klasu koja služi kao posrednik izmeðu originalne klase i željenog interfejsa. Tim 
+postupkom se dobija željena funkcionalnost bez izmjena na originalnoj klasi i bez 
+ugrožavanja integriteta cijele aplikacije.
+Adapter patern, u našoj aplikaciji, bi se mogao koristiti za prilagoðavanje klase korisnik i
+njenih popratnih klasa za prikaz profila kada su korisnici upareni, kada nisu i prikaz vlastitog 
+profila.
+
+Proxy patern
+
+Namjena Proxy paterna je da omoguæi pristup i kontrolu pristupa stvarnim objektima. Proxy
+je obièno mali javni surogat objekat koji predstavlja kompleksni objekat èija aktivizacija
+se postiže na osnovu postavljenih pravila. Proxy patern rješava probleme kada se objekt ne
+može  instancirati direktno (npr. zbog restrikcije pristupa).
+U našoj aplikaciji se može koristiti za kontrolu brisanja i deaktiviranja profila pošto te
+opcije ima samo administrator.
+
+Strategy patern
+
+Strategy patern izdvaja algoritam iz matiène klase i ukljuèuje ga u posebne klase. Pogodan
+je kada postoje razlièiti primjenjivi algoritmi (strategije) za neki problem. Strategy patern
+omoguæava  klijentu izbor jednog od algoritma iz familije algoritama za korištenje. Algoritmi
+su neovisni od klijenata koji ih koriste.
+U našoj aplikaciji može se koristiti za odabir razlièitih filtera za prikaz profila korisnika
+i njihove promjene (godine, udaljenost). 
