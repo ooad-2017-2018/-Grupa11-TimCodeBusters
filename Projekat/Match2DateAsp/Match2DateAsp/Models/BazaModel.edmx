@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="M2DbazaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'M2Dbaza.dbo.Kontakti' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Kontakti">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+            <PropertyRef Name="createdAt" />
+            <PropertyRef Name="updatedAt" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="facebook" Type="nvarchar(max)" />
+          <Property Name="instagram" Type="nvarchar(max)" />
+          <Property Name="brojTelefona" Type="nvarchar(max)" />
+          <Property Name="version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="createdAt" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="updatedAt" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ime" Type="nvarchar(max)" />
+          <Property Name="prezime" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="sifra" Type="nvarchar(max)" />
+          <Property Name="spol" Type="nvarchar(max)" />
+          <Property Name="grad" Type="nvarchar(max)" />
+          <Property Name="opis" Type="nvarchar(max)" />
+          <Property Name="aktivan" Type="bit" />
+          <Property Name="datumRodjenja" Type="datetimeoffset" Precision="7" />
+          <Property Name="ocjena" Type="float" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="createdAt" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="updatedAt" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="slika1" Type="nvarchar" MaxLength="200" />
+          <Property Name="slika2" Type="nvarchar" MaxLength="200" />
+          <Property Name="slika3" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="c_fk_Kont_Korisnici">
+          <End Role="korisnici" Type="Self.korisnici" Multiplicity="1" />
+          <End Role="Kontakti" Type="Self.Kontakti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kontakti">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="M2DbazaModelStoreContainer">
+          <EntitySet Name="korisnici" EntityType="Self.korisnici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kontakti" EntityType="Self.Kontakti" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kontakti].[id] AS [id], 
+    [Kontakti].[facebook] AS [facebook], 
+    [Kontakti].[instagram] AS [instagram], 
+    [Kontakti].[brojTelefona] AS [brojTelefona], 
+    [Kontakti].[version] AS [version], 
+    [Kontakti].[createdAt] AS [createdAt], 
+    [Kontakti].[updatedAt] AS [updatedAt], 
+    [Kontakti].[deleted] AS [deleted]
+    FROM [dbo].[Kontakti] AS [Kontakti]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="c_fk_Kont_Korisnici" Association="Self.c_fk_Kont_Korisnici">
+            <End Role="korisnici" EntitySet="korisnici" />
+            <End Role="Kontakti" EntitySet="Kontakti" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="M2DbazaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="korisnici">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prezime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sifra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="grad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="aktivan" Type="Boolean" />
+          <Property Name="datumRodjenja" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ocjena" Type="Double" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="createdAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="updatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="slika1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="slika2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="slika3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kontaktis" Relationship="Self.c_fk_Kont_Korisnici" FromRole="korisnici" ToRole="Kontakti" />
+        </EntityType>
+        <EntityType Name="Kontakti">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="version" />
+            <PropertyRef Name="createdAt" />
+            <PropertyRef Name="updatedAt" />
+            <PropertyRef Name="deleted" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="facebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="brojTelefona" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="createdAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="updatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="korisnici" Relationship="Self.c_fk_Kont_Korisnici" FromRole="Kontakti" ToRole="korisnici" />
+        </EntityType>
+        <Association Name="c_fk_Kont_Korisnici">
+          <End Role="korisnici" Type="Self.korisnici" Multiplicity="1" />
+          <End Role="Kontakti" Type="Self.Kontakti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="korisnici">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kontakti">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="M2DbazaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="korisnicis" EntityType="Self.korisnici" />
+          <EntitySet Name="Kontaktis" EntityType="Self.Kontakti" />
+          <AssociationSet Name="c_fk_Kont_Korisnici" Association="Self.c_fk_Kont_Korisnici">
+            <End Role="korisnici" EntitySet="korisnicis" />
+            <End Role="Kontakti" EntitySet="Kontaktis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="M2DbazaModelStoreContainer" CdmEntityContainer="M2DbazaEntities">
+          <EntitySetMapping Name="korisnicis">
+            <EntityTypeMapping TypeName="M2DbazaModel.korisnici">
+              <MappingFragment StoreEntitySet="korisnici">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="spol" ColumnName="spol" />
+                <ScalarProperty Name="grad" ColumnName="grad" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="aktivan" ColumnName="aktivan" />
+                <ScalarProperty Name="datumRodjenja" ColumnName="datumRodjenja" />
+                <ScalarProperty Name="ocjena" ColumnName="ocjena" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+                <ScalarProperty Name="slika1" ColumnName="slika1" />
+                <ScalarProperty Name="slika2" ColumnName="slika2" />
+                <ScalarProperty Name="slika3" ColumnName="slika3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kontaktis">
+            <EntityTypeMapping TypeName="M2DbazaModel.Kontakti">
+              <MappingFragment StoreEntitySet="Kontakti">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="brojTelefona" ColumnName="brojTelefona" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,154 @@
+﻿@model Match2DateAsp.Models.korisnici
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>korisnici</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sifra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sifra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.spol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.spol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aktivan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aktivan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumRodjenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumRodjenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ocjena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ocjena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.version)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.version)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slika1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slika1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slika2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slika2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.slika3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.slika3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

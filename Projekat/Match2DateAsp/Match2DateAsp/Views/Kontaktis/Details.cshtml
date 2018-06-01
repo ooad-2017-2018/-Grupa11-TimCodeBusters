@@ -1,0 +1,50 @@
+﻿@model Match2DateAsp.Models.Kontakti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kontakti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.facebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.facebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instagram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instagram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brojTelefona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brojTelefona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.korisnici.ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.korisnici.ime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
