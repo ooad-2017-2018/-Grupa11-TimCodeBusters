@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="07b6bc4740d54df5b5444c1d9a8e2dbc" Name="Diagram1">
+      <Diagram DiagramId="07b6bc4740d54df5b5444c1d9a8e2dbc" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="M2DbazaModel.korisnici" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="M2DbazaModel.Kontakti" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="M2DbazaModel.c_fk_Kont_Korisnici" ManuallyRouted="false" />
