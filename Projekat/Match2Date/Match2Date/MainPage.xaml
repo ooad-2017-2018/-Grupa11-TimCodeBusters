@@ -8,6 +8,7 @@
     mc:Ignorable="d">
     <!--  HeaderFocusVisualPlacement="SelectedItemHeader" dodati ovo u 12 liniju tera-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+<<<<<<< HEAD
         <Pivot x:Name="rootPivot" Title="Match2Date" 
      
                
@@ -168,6 +169,10 @@
 
         </Pivot>
 
+=======
+        <TextBlock  Text="Stranica nije završena! Odjavite se!" FontSize="30" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
+        <Button Content="Odjavi se" Background="#FF60018D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.475,-3.016" Click="Button_Click" Height="42" Margin="0,557,0,0"/>
+>>>>>>> dbed42c8135f5aca6919fdb092c54d4745f86015
 
     </Grid>
 </Page>
