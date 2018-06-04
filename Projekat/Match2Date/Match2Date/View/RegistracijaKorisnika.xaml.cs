@@ -33,7 +33,9 @@ namespace Match2Date.View
 
             DataContext = new RegistracijaKorisnikaViewModel();
         }
-
-       
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ((Frame)Window.Current.Content).Navigate(typeof(Prijava));
+        }
     }
 }
