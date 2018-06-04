@@ -136,6 +136,7 @@
     <Content Include="Assets\male.png" />
     <Content Include="Assets\pair.png" />
     <Content Include="Assets\remove.png" />
+    <Content Include="Assets\slikakorisnik.png" />
     <Content Include="Assets\slika.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

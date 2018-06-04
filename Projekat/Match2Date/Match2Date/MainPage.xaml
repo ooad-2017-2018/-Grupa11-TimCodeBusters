@@ -2,12 +2,172 @@
     x:Class="Match2Date.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Match2Date"
+  
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <!--  HeaderFocusVisualPlacement="SelectedItemHeader" dodati ovo u 12 liniju tera-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot x:Name="rootPivot" Title="Match2Date" 
+     
+               
+               >
+
+            <Pivot.RightHeader>
+                <CommandBar OverflowButtonVisibility="Collapsed" Background="Transparent">
+
+                    <AppBarSeparator/>
+                    <AppBarButton Icon="Admin"/>
+                </CommandBar>
+            </Pivot.RightHeader>
+            <PivotItem Header="Moj profil"                          
+            >
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Text="&#x0a;Licni podaci: "   Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    <StackPanel Background="#ebebe0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="1" Grid.Column="1">
+                      
+                       
+                        <TextBlock  Text="Ime i Prezime: John Doe "    ></TextBlock>
+                        <TextBlock  Text="Datum rodjenja: 25.05.1992."  ></TextBlock>
+                        <TextBlock  Text="Spol: Musko"   ></TextBlock>
+                        <TextBlock  Text="Grad: Sarajevo"  ></TextBlock>
+                        <TextBlock  Text="Email: john.doe@etf.unsa.ba"   ></TextBlock>
+                        <TextBlock  Text="Sifra: ******"  
+                                    ></TextBlock>
+                    </StackPanel>
+                    <TextBlock  Text="&#x0a;Kontakt: "   Grid.Row="4" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    <StackPanel Background="#ebebe0" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="1" Grid.Column="1">
+                    <TextBlock  Text="Facebook: www.facebook.com/johndoe "   Grid.Row="4" Grid.Column="1"></TextBlock>
+                    <TextBlock  Text="Instagram: www.instagram.com/johndoez "   Grid.Row="4" Grid.Column="2" ></TextBlock>
+                    <TextBlock  Text="Telefon: 061-111-222" Grid.Row="5" Grid.Column="1" ></TextBlock>
+                    </StackPanel>
+                    <TextBlock  Text="Opis: "   Grid.Row="7" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    <StackPanel  Background="#ebebe0" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="1" Grid.Column="1">
+                        <TextBlock  Text="Cao, ja sam John Doe, imam 25 godina i živim u Sarajevu.&#x0a;U slobodno vrijeme volim izlaziti..."   Grid.Row="7" Grid.Column="1" ></TextBlock>
+                    </StackPanel>
+                    <Button Grid.Row="2" Margin="50,0,60,0" Background="#FF60018D"  Foreground="White" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Uredi licne podatke"/>
+                    <Button Grid.Row="5" Margin="50,0,60,0"  Background="#FF60018D" Foreground="White"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Uredi kontakt podatke"/>
+                    <Button Grid.Row="8" Margin="50,0,60,0"  Background="#FF60018D" Foreground="White"  Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Uredi opis"/>
+                    <Button Grid.Row="11" Background="#006600" Margin="100,5,100,5" Foreground="White"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Spasi izmjene"/>
+
+
+                </Grid>
+
+            </PivotItem>
+            <PivotItem Header="Poruke">
+                
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" HorizontalAlignment="Center"
+                                Text="Upareni korisnici:" Margin="0,25,0,0" VerticalAlignment="Top"/>
+                    <ListView Grid.Column="0" Background="AliceBlue" Name="lista"
+    IsItemClickEnabled="True"
+    IsSwipeEnabled="False"
+    CanDragItems="False"
+    SelectionMode="Single"  Margin="0,359,0,0" HorizontalAlignment="Center" />
+
+                    <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" VerticalAlignment="Center" ></TextBox>
+                    <Button Grid.Row="10" Background="#80bbe5" Foreground="White"  Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Posalji!"
+                                Margin="30,20,30,0"/>
+
+
+
+                </Grid>
+               
+
+
+            </PivotItem>
+
+            <PivotItem Header="Uparivanje">
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="8">
+                        <Image Source="/Assets/slikakorisnik.png" Grid.Column="2" Grid.Row="1" Grid.RowSpan="7" Grid.ColumnSpan="2" 
+                                 HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <Button Grid.Row="5" Background="#006600" Foreground="White"  Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="LIKE"
+                                Margin="10,0,0,0"/>
+                    <Button Grid.Row="5" Background="#800000" Foreground="White"  Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="UNLIKE"
+                                Margin="0,0,10,0"/>
+
+                    <StackPanel Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Background="#c2c2a3" Margin="0,10,0,10" Grid.RowSpan="3">
+                        <TextBlock  Text="John Doe, 25, Sarajevo "  FontSize="20" 
+                    
+                       FontWeight="Bold" ></TextBlock>
+                        <TextBlock Margin="10,10,10,10" Text="Cao, ja sam John Doe, imam 25 godina i živim u Sarajevu.&#x0a;U slobodno vrijeme volim izlaziti..."></TextBlock>
+
+                        <TextBlock FontSize="15" 
+                    
+                       FontWeight="Bold">Ocjena: 4.5 </TextBlock>
+                    </StackPanel>
+                    <Button Grid.Row="10" Background="#cc0000" Foreground="White"  Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Prijavi!"
+                                Margin="30,20,30,0"/>
+                   
+                </Grid>
+            </PivotItem>
+
+
+        </Pivot>
+
 
     </Grid>
 </Page>
