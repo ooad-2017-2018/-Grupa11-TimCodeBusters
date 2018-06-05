@@ -8,12 +8,7 @@
     mc:Ignorable="d">
     <!--  HeaderFocusVisualPlacement="SelectedItemHeader" dodati ovo u 12 liniju tera-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-<<<<<<< HEAD
-        <Pivot x:Name="rootPivot" Title="Match2Date" 
-     
-               
-               >
-
+        <Pivot x:Name="rootPivot" Title="Match2Date">
             <Pivot.RightHeader>
                 <CommandBar OverflowButtonVisibility="Collapsed" Background="Transparent">
 
@@ -45,8 +40,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock  Text="&#x0a;Licni podaci: "   Grid.Row="0" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
                     <StackPanel Background="#ebebe0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="1" Grid.Column="1">
-                      
-                       
+
+
                         <TextBlock  Text="Ime i Prezime: John Doe "    ></TextBlock>
                         <TextBlock  Text="Datum rodjenja: 25.05.1992."  ></TextBlock>
                         <TextBlock  Text="Spol: Musko"   ></TextBlock>
@@ -57,9 +52,9 @@
                     </StackPanel>
                     <TextBlock  Text="&#x0a;Kontakt: "   Grid.Row="4" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
                     <StackPanel Background="#ebebe0" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="1" Grid.Column="1">
-                    <TextBlock  Text="Facebook: www.facebook.com/johndoe "   Grid.Row="4" Grid.Column="1"></TextBlock>
-                    <TextBlock  Text="Instagram: www.instagram.com/johndoez "   Grid.Row="4" Grid.Column="2" ></TextBlock>
-                    <TextBlock  Text="Telefon: 061-111-222" Grid.Row="5" Grid.Column="1" ></TextBlock>
+                        <TextBlock  Text="Facebook: www.facebook.com/johndoe "   Grid.Row="4" Grid.Column="1"></TextBlock>
+                        <TextBlock  Text="Instagram: www.instagram.com/johndoez "   Grid.Row="4" Grid.Column="2" ></TextBlock>
+                        <TextBlock  Text="Telefon: 061-111-222" Grid.Row="5" Grid.Column="1" ></TextBlock>
                     </StackPanel>
                     <TextBlock  Text="Opis: "   Grid.Row="7" Grid.Column="0" TextAlignment="Center" FontWeight="Bold"></TextBlock>
                     <StackPanel  Background="#ebebe0" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="1" Grid.Column="1">
@@ -75,7 +70,7 @@
 
             </PivotItem>
             <PivotItem Header="Poruke">
-                
+
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -112,7 +107,7 @@
 
 
                 </Grid>
-               
+
 
 
             </PivotItem>
@@ -158,21 +153,17 @@
 
                         <TextBlock FontSize="15" 
                     
-                       FontWeight="Bold">Ocjena: 4.5 </TextBlock>
+                       FontWeight="Bold">Ocjena: 4.5</TextBlock>
                     </StackPanel>
                     <Button Grid.Row="10" Background="#cc0000" Foreground="White"  Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Prijavi!"
                                 Margin="30,20,30,0"/>
-                   
+
                 </Grid>
             </PivotItem>
 
 
         </Pivot>
-
-=======
-        <TextBlock  Text="Stranica nije završena! Odjavite se!" FontSize="30" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" />
-        <Button Content="Odjavi se" Background="#FF60018D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.475,-3.016" Click="Button_Click" Height="42" Margin="0,557,0,0"/>
->>>>>>> dbed42c8135f5aca6919fdb092c54d4745f86015
+        <Button Content="Odjavi se" Margin="0,10,10,0" Background="#FF60018D" Foreground="White" HorizontalAlignment="Right"  VerticalAlignment="Top" Click="Button_Click" Height="42" />
 
     </Grid>
 </Page>
